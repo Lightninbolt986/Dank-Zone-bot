@@ -1,0 +1,44 @@
+{=():}
+{=(p):!}
+{=(limit):24}
+{=(multi):4}
+{=(rmute):Muted}
+{override}{silence}
+
+{=(time):{range:1-60}}
+
+{=(rmute):{replace(>,):{replace(<@​&,):{rmute}}}}
+{=(limit):{if({math:trunc({limit}/1)}!={limit}):24|{limit}}}
+{=(limit):{if({limit}>=25):24|{limit}}}
+{=(limit):{if({limit}<1):1|{limit}}}
+
+{=(risk):{and({math:trunc({2}/1)}=={2}|{2}>=1|{2}<={limit}):{2}|0}}
+{=(extra):{if({args(1)}!={args(2)}):{if({risk}!=0):{m:trunc({risk}*{multi})}m}}}
+{=(total):{extra} {time}s}
+
+{=(cwin):{m:trunc(25-{risk})}}
+{=(close):{m:trunc(25+{risk})}}
+
+{=(out):{if({target(id)}=={user(id)}):fault|{if({risk}!=0):{rand:{cwin}|w2,{close}|l2}|{#:w1,l1}}}}
+
+{blacklist(Fight cannot be used by and on muted users):748036928271548467}
+{{if({contains(748036928271548467):{target(roleids)}}==true):blacklist(Fight cannot be used by and on muted users):{server(id)}}}
+
+{{if({out}==w1):c:temprole {target(id)} {rmute} {time}s}}
+{if({out}==w1):{user(mention)} has won and {target(mention)} has been muted for **{time}s** <:TT_kekPointOwO:830869935700836352>}
+
+{{if({out}==l1):c:temprole {user(id)} {rmute} {time}s}}
+{if({out}==l1):{target(mention)} has won and {user(mention)} has been muted for **{time}s** <:TT_kekPointOwO:830869935700836352>}
+
+{{if({out}==w2):c:temprole {target(id)} {rmute} {total}}}
+{if({out}==w2):You take a big risks and it pays off <a:ad_PepeSwinging:806027962569719818>
+{user(mention)} totally rekts {target(mention)} and they have been muted for **{total}**}
+
+{{if({out}==l2):c:temprole {user(id)} {rmute} {total}}}
+{if({out}==l2):You take a big risks but miserably fail <:TT_reallyOwO:755536819474661426>
+{target(mention)} totally rekts {user(mention)} and they have been muted for **{total}**}
+
+{if({out}==fault):{user(mention)} include a user to fight
+Usage: `{p}fight <user> [0-{limit}].`}
+
+
