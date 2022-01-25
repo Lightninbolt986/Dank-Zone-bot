@@ -1,32 +1,23 @@
 module.exports = async (Discord, client, interaction) => {
   if (interaction.isCommand()) {
-       const profileModel = require("../../models/profileSchema");
-  let profileData;
-  try {
+    const profileModel = require("../../models/profileSchema");
+    let profileData;
+    try {
       profileData = await profileModel.findOne({
         userID: interaction.user.id
       });
-    if (!profileData) {
-      let profile = await profileModel.create({
-        userID: interaction.user.id,
-        serverID: interaction.guild.id,
-        moni: 1000,
-        bank: 0,
-        hugs: 0,
-        kisses: 0,
-        insults: 0,
-        praises: 0,
-        fucks: 0,
-        pats: 0,
-        slaps: 0
-      });
-      profile.save();
+      if (!profileData) {
+        profileData = await profileModel.create({
+          userID: interaction.user.id,
+          dono: 0
+        });
+        profile.save();
+      }
+    } catch (err) {
+      console.log(err);
     }
-  } catch (err) {
-    console.log(err);
-  }
 
- 
+
     await interaction.deferReply({
       ephemeral: false
     }).catch(() => {});
@@ -48,7 +39,7 @@ module.exports = async (Discord, client, interaction) => {
     }
     interaction.member = interaction.guild.members.cache.get(interaction.user.id);
 
-    cmd.execute(interaction, args, cmd, client, Discord,profileData);
+    cmd.execute(interaction, args, cmd, client, Discord, profileData);
   }
 
 }
