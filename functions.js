@@ -33,5 +33,8 @@ module.exports = {
         else if (finalval < 5 && finalval >= 0) { bar = `${start + zero + empty + empty + empty + empty + empty + empty + empty + empty + eempty}` }
 
         return bar
+    },
+    commas: function(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
 }
