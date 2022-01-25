@@ -11,7 +11,7 @@ module.exports = async (Discord, client, interaction) => {
           userID: interaction.user.id,
           dono: 0
         });
-        profile.save();
+        profileData.save();
       }
     } catch (err) {
       console.log(err);
