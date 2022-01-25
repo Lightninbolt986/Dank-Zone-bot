@@ -11,7 +11,7 @@ module.exports = async (Discord, client, message) => {
                 userID: message.author.id,
                 dono: 0
             });
-            profile.save();
+            profileData.save();
 
         }
     } catch (err) {
