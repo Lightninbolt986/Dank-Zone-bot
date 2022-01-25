@@ -1,39 +1,54 @@
+const emotes = require("../../data/emotes.json")
+const Discord = require('discord.js')
+const profileModel = require(`../../models/profileSchema`)
+
 module.exports = {
     name: 'add',
     aliases: ['note', 'dnote', 'dn'],
     async execute(message, args, cmd, client, d, Profile) {
-        const Discord = require('discord.js')
-        /** @param {import('discord.js').Message} message */
 
+     //defining
+        const staffrole = message.guild.roles.cache.get("768724931806101524")
+        const donationlog = message.guild.channels.cache.get("806143325270441985")
+     
      //staffrole
-        if (!message.member.roles.cache.has("768724931806101524")) {
+        if (!message.member.roles.cache.has(staffrole.id)) {
             return message.reply({
-                content: "<:nx_cross:914921124670890064> You need the <@&768724931806101524> role to use this command.",
+                content: `${emotes.cross} You need the ${staffrole} role to use this command.`,
                 allowedMentions: { parse: ['users'], repliedUser: false }
             })
         }
         
      //user
         const user = await message.mentions.members.first() || message.guild.users.cache.get(args[0])
-        if (!user) { return message.reply("<:nx_cross:914921124670890064> You need to mention someone.") }
+        if (!user) { return message.reply(`${emotes.cross} You need to mention someone.`) }
         
      //amount
         const value = args[1]
         let amount
 
      //if no args[1]
-        if (!value) { return message.reply(`<:nx_cross:914921124670890064> Thats not a valid value.\n**Syntax:** \`${process.env.prefix}dnote <user> <amount>\``) }
+        if (!value) { return message.reply(`${emotes.cross} Thats not a valid value.\n**Syntax:** \`${process.env.prefix}dnote <user> <amount>\``) }
         
      //replace m => 1,000,000
         if (value.toLowerCase().includes("m")) {
             val = value.toLowerCase().replace("m", "")
             amount = parseInt(val * 1000000)
-        
+    
      //replace mil => 1,000,000
         } else if (value.toLowerCase().includes("mil")) {
             val = value.toLowerCase().replace("mil", "")
             amount = parseInt(val * 1000000)
+     
+     //replace b => 1,000,000,000
+        } else if (value.toLowerCase().includes("b")) {
+            val = value.toLowerCase().replace("b", "")
+            amount = parseInt(val * 1000000000)
         
+     //replace bil => 1,000,000,000
+        } else if (value.toLowerCase().includes("bil")) {
+            val = value.toLowerCase().replace("bil", "")
+            amount = parseInt(val * 1000000000)
      //replace k => 1,000
         } else if (value.toLowerCase().includes("k")) {
             val = value.toLowerCase().replace("k", "")
@@ -43,10 +58,9 @@ module.exports = {
         } else { amount = parseInt(value) }
 
      //if no value or not integer
-        if (!amount || isNaN(amount)) { return message.reply(`<:nx_cross:914921124670890064> Thats not a valid value.\n**Syntax:** \`${process.env.prefix}dnote <user> <amount>\``) }
+        if (!amount || isNaN(amount)) { return message.reply(`${emotes.cross} Thats not a valid value.\n**Syntax:** \`${process.env.prefix}dnote <user> <amount>\``) }
         
-     //profilemodel
-        const profileModel = require(`../../models/profileSchema`)
+     //profiledata
         const profileData = await profileModel.findOne({
             userID: user.id
         });
@@ -56,25 +70,23 @@ module.exports = {
           //increment value
             $inc: { dono: amount }
         });
+        
      //send embed
         message.reply({
             embeds: [new Discord.MessageEmbed()
-                .setDescription(`<a:bp_moon:935485565288190012> **Donation Noted.**\n<:bp_replycont:905405321277763624> User : \`${user.user.tag}\`\n<:bp_replycont:905405321277763624> Amount : \`⏣ ${commas(amount.toString())}\`\n<:bp_reply:905405401946783804> Total Donation : \`⏣ ${commas(profileData.dono)}\``)
-                .setFooter({ text: `ID: ${user.id}` })
+                .setDescription(`${emotes.moon} **Donation Noted.**\n${emotes.replycont} User : \`${user.user.tag}\`\n${emotes.replycont} Amount : \`⏣ ${commas(amount.toString())}\`\n${emotes.reply} Total Donation : \`⏣ ${commas(profileData.dono + amount.toString())}\``)
+                .setFooter(`ID: ${user.id}`)
                 .setColor("BLURPLE")],
             allowedMentions: { parse: ['users'], repliedUser: false }
         })
 
      //log donation
-        let dnchannel = client.channels.cache.get("806143325270441985")
-        dnchannel.send({
+        donationlog.send({
             embeds: [new Discord.MessageEmbed()
-                .setDescription(`<a:bp_moon:935485565288190012> **Donation Logs.**\n<:bp_replycont:905405321277763624> User : \`${user.user.tag}\`\n<:bp_replycont:905405321277763624> Amount : \`⏣ ${commas(amount.toString())}\`\n<:bp_replycont:905405321277763624> Total Donation : \`⏣ ${commas(profileData.dono)}\`\n<:bp_replycont:905405321277763624> Noted by : \`${message.author.tag}\`\n<:bp_reply:905405401946783804> Link : [Jump](${message.url})`)
-                .setFooter({ text: `ID: ${user.id}` })
+                .setDescription(`${emotes.moon} **Donation Logs.**\n${emotes.replycont} User : \`${user.user.tag}\`\n${emotes.replycont} Amount : \`⏣ ${commas(amount.toString())}\`\n${emotes.replycont} Total Donation : \`⏣ ${commas(profileData.dono + amount.toString())}\`\n${emotes.replycont} Noted by : \`${message.author.tag}\`\n${emotes.reply} Link : [Jump](${message.url})`)
+                .setFooter(`ID: ${user.id}`)
                 .setColor("BLURPLE")],
         })
-
-
     }
 }
 
@@ -93,8 +105,7 @@ function commas(x) {
     ('(...´...´.... ¯~/'...') 
      \.................'..../ 
       ''...\.......... _.·´ 
-        \..............( 
-          \.............\
+       \..............( 
+        \.............\
 
-          -test
 */
