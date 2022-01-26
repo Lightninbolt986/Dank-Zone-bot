@@ -1,1102 +1,656 @@
 {
-  "pink": {
-    "value": 5,
-    "link": "https://cdn.discordapp.com/emojis/834192945019617280.png}",
-    "aliases": []
+  "pink phallic": {
+    "value": 20,
+    "link": "https://cdn.discordapp.com/emojis/834192945019617280.png",
+    "aliases": ["ink", "pink", "phallic", "ppo", "pin", "pinkphallic"],
+    "showname": "pink phallic"
   },
   "cookie": {
-    "value": 2500,
-    "link": "https://cdn.discordapp.com/emojis/573152241289003036.png}",
-    "aliases": []
+    "value": 3000,
+    "link": "https://cdn.discordapp.com/emojis/573152241289003036.png",
+    "aliases": [],
+    "showname": "cookie"
   },
   "garbage": {
-    "value": 3000,
-    "link": "https://cdn.discordapp.com/emojis/834091084392693760.png}",
-    "aliases": []
+    "value": 3500,
+    "link": "https://cdn.discordapp.com/emojis/834091084392693760.png",
+    "aliases": [],
+    "showname": "garbage"
   },
   "junk": {
-    "value": 3000,
-    "link": "https://cdn.discordapp.com/emojis/834091084359139378.png}",
-    "aliases": []
+    "value": 1500,
+    "link": "https://cdn.discordapp.com/emojis/834091084359139378.png",
+    "aliases": [],
+    "showname": "junk"
   },
-  "seaweed": {
+  "sea weed": {
     "value": 3000,
-    "link": "https://cdn.discordapp.com/emojis/841405708103581726.png}",
-    "aliases": []
+    "link": "https://cdn.discordapp.com/emojis/841405708103581726.png",
+    "aliases": ["weed", "sea", "seaweed"],
+    "showname": "sea weed"
   },
   "trash": {
-    "value": 10000,
-    "link": "https://cdn.discordapp.com/emojis/834091084346949652.png}",
-    "aliases": []
+    "value": 20000,
+    "link": "https://cdn.discordapp.com/emojis/834091084346949652.png",
+    "aliases": [],
+    "showname": "trash"
   },
   "bread": {
     "value": 10000,
-    "link": "https://cdn.discordapp.com/emojis/716848527149629490.png}",
-    "aliases": []
+    "link": "https://cdn.discordapp.com/emojis/716848527149629490.png",
+    "aliases": [],
+    "showname": "bread"
   },
-  "chill": {
-    "value": 15000,
-    "link": "https://cdn.discordapp.com/emojis/716825781908537395.png}",
-    "aliases": []
-  },
-  "chillpill": {
-    "value": 15000,
-    "link": "https://cdn.discordapp.com/emojis/716825781908537395.png}",
-    "aliases": []
+  "chill pill": {
+    "value": 20000,
+    "link": "https://cdn.discordapp.com/emojis/716825781908537395.png",
+    "aliases": ["chill", "pill", "chillpill"],
+    "showname": "chill pill"
   },
   "candy": {
-    "value": 20000,
-    "link": "https://cdn.discordapp.com/emojis/792397132828114965.png}",
-    "aliases": []
+    "value": 30000,
+    "link": "https://cdn.discordapp.com/emojis/792397132828114965.png",
+    "aliases": [],
+    "showname": "candy"
   },
-  "blue": {
-    "value": 20000,
-    "link": "https://cdn.discordapp.com/emojis/834192945124474983.png}",
-    "aliases": []
+  "blue phallic": {
+    "value": 25000,
+    "link": "https://cdn.discordapp.com/emojis/834192945124474983.png",
+    "aliases": ["bluephallic", "blue"],
+    "showname": "blue phallic"
   },
-  "purple": {
-    "value": 35000,
-    "link": "https://cdn.discordapp.com/emojis/834192945334452244.png}",
-    "aliases": []
+  "purple phallic": {
+    "value": 25000,
+    "link": "https://cdn.discordapp.com/emojis/834192945334452244.png",
+    "aliases": ["purplephallic", "purp", "purple"],
+    "showname": "purple phallic"
   },
-  "orange": {
-    "value": 35000,
-    "link": "https://cdn.discordapp.com/emojis/834192945132601426.png}",
-    "aliases": []
+  "orange phallic": {
+    "value": 25000,
+    "link": "https://cdn.discordapp.com/emojis/834192945132601426.png",
+    "aliases": ["orangephallic", "oran", "orange"],
+    "showname": "orange phallic"
   },
-  "golden": {
-    "value": 135000,
-    "link": "https://cdn.discordapp.com/emojis/834192944956702746.png}",
-    "aliases": []
+  "golden corndog": {
+    "value": 1500000,
+    "link": "https://cdn.discordapp.com/emojis/834192944956702746.png",
+    "aliases": ["goldenc", "gcorndog"],
+    "showname": "golden corndog"
   },
-  "gold": {
-    "value": 135000,
-    "link": "https://cdn.discordapp.com/emojis/834192944956702746.png}",
-    "aliases": []
-  },
-  "goldpp": {
-    "value": 135000,
-    "link": "https://cdn.discordapp.com/emojis/834192944956702746.png}",
-    "aliases": []
+  "gold phallic": {
+    "value": 100000,
+    "link": "https://cdn.discordapp.com/emojis/834192944956702746.png",
+    "aliases": ["golden", "gold", "goldenphallic", "goldenpp", "goldpp"],
+    "showname": "gold phallic"
   },
   "corncob": {
-    "value": 250000,
-    "link": "https://cdn.discordapp.com/emojis/834080273942839326.png}",
-    "aliases": []
+    "value": 300000,
+    "link": "https://cdn.discordapp.com/emojis/834080273942839326.png",
+    "aliases": [],
+    "showname": "corncob"
   },
   "corndog": {
-    "value": 250000,
-    "link": "https://cdn.discordapp.com/emojis/834080273796694056.png}",
-    "aliases": []
+    "value": 300000,
+    "link": "https://cdn.discordapp.com/emojis/834080273796694056.png",
+    "aliases": [],
+    "showname": "corndog"
   },
   "potato": {
-    "value": 250000,
-    "link": "https://cdn.discordapp.com/emojis/834080273913872384.png}",
-    "aliases": []
+    "value": 350000,
+    "link": "https://cdn.discordapp.com/emojis/834080273913872384.png",
+    "aliases": ["potat", "pota"],
+    "showname": "potato"
   },
-  "stat": {
-    "value": 375000,
-    "link": "https://cdn.discordapp.com/emojis/834978069629894663.png}",
-    "aliases": []
-  },
-  "statue": {
-    "value": 375000,
-    "link": "https://cdn.discordapp.com/emojis/834978069629894663.png}",
-    "aliases": []
-  },
-  "pepest": {
-    "value": 375000,
-    "link": "https://cdn.discordapp.com/emojis/834978069629894663.png}",
-    "aliases": []
+  "pepe statue": {
+    "value": 450000,
+    "link": "https://cdn.discordapp.com/emojis/834978069629894663.png",
+    "aliases": ["stat", "pepest", "pepestatue"],
+    "showname": "pepe statue"
   },
   "snowball": {
     "value": 15000,
-    "link": "https://cdn.discordapp.com/emojis/573150143524765699.png}",
-    "aliases": []
-  },
-  "snow": {
-    "value": 15000,
-    "link": "https://cdn.discordapp.com/emojis/573150143524765699.png}",
-    "aliases": []
-  },
-  "toe": {
-    "value": 30000,
-    "link": "https://cdn.discordapp.com/emojis/718136880163586169.png}",
-    "aliases": []
+    "link": "https://cdn.discordapp.com/emojis/573150143524765699.png",
+    "aliases": ["snow"],
+    "showname": "snowball"
   },
   "cupid": {
     "value": 30000,
-    "link": "https://cdn.discordapp.com/emojis/718136880163586169.png}",
-    "aliases": []
+    "link": "https://cdn.discordapp.com/emojis/718136880163586169.png",
+    "aliases": ["toe", "cupids", "cupidstoe"],
+    "showname": "cupid"
   },
-  "notif": {
+  "fool's notifs": {
     "value": 32000,
-    "link": "https://cdn.discordapp.com/emojis/826974895295692840.png}",
-    "aliases": []
+    "link": "https://cdn.discordapp.com/emojis/826974895295692840.png",
+    "aliases": ["fool", "notif", "foolsnotifs", "foolnotifs", "foolsnotif"],
+    "showname": "fool's notifs"
   },
-  "fool": {
-    "value": 32000,
-    "link": "https://cdn.discordapp.com/emojis/826974895295692840.png}",
-    "aliases": []
-  },
-  "pepe": {
+  "rare pepe": {
     "value": 35000,
-    "link": "https://cdn.discordapp.com/emojis/668945671427981312.gif}",
-    "aliases": []
+    "link": "https://cdn.discordapp.com/emojis/668945671427981312.gif",
+    "aliases": ["pepe", "rarepepe", "rare"],
+    "showname": "rare pepe"
   },
-  "rarepepe": {
-    "value": 35000,
-    "link": "https://cdn.discordapp.com/emojis/668945671427981312.gif}",
-    "aliases": []
-  },
-  "hat": {
-    "value": 37500,
-    "link": "https://cdn.discordapp.com/emojis/573150240954253352.png}",
-    "aliases": []
-  },
-  "santahat": {
-    "value": 37500,
-    "link": "https://cdn.discordapp.com/emojis/573150240954253352.png}",
-    "aliases": []
-  },
-  "zza": {
-    "value": 75000,
-    "link": "https://cdn.discordapp.com/attachments/693517202879414312/788070266579189790/pizza-export2.png}",
-    "aliases": []
+  "santa's hat": {
+    "value": 32500,
+    "link": "https://cdn.discordapp.com/emojis/573150240954253352.png",
+    "aliases": ["hat", "santa", "santas", "santashat", "santahat"],
+    "showname": "santa's hat"
   },
   "pizza": {
-    "value": 75000,
-    "link": "https://cdn.discordapp.com/attachments/693517202879414312/788070266579189790/pizza-export2.png}",
-    "aliases": []
-  },
-  "bank": {
-    "value": 100000,
-    "link": "https://cdn.discordapp.com/emojis/830509316888985621.png}",
-    "aliases": []
-  },
-  "kno": {
-    "value": 100000,
-    "link": "https://cdn.discordapp.com/emojis/830509316888985621.png}",
-    "aliases": []
+    "value": 115000,
+    "link": "https://cdn.discordapp.com/attachments/693517202879414312/788070266579189790/pizza-export2.png",
+    "aliases": ["zza"],
+    "showname": "pizza"
   },
   "banknote": {
-    "value": 100000,
-    "link": "https://cdn.discordapp.com/emojis/830509316888985621.png}",
-    "aliases": []
+    "value": 110000,
+    "link": "https://cdn.discordapp.com/emojis/830509316888985621.png",
+    "aliases": ["kno", "bank"],
+    "showname": "banknote"
   },
-  "pepec": {
-    "value": 275000,
-    "link": "https://cdn.discordapp.com/emojis/718138332982280272.gif}",
-    "aliases": []
+  "pepe coin": {
+    "value": 325000,
+    "link": "https://cdn.discordapp.com/emojis/718138332982280272.gif",
+    "aliases": ["pepecoin", "pec", "pepec"],
+    "showname": "pepe coin"
   },
-  "pec": {
-    "value": 275000,
-    "link": "https://cdn.discordapp.com/emojis/718138332982280272.gif}",
-    "aliases": []
-  },
-  "pepecoin": {
-    "value": 275000,
-    "link": "https://cdn.discordapp.com/emojis/718138332982280272.gif}",
-    "aliases": []
-  },
-  "gift": {
-    "value": 375000,
-    "link": "https://cdn.discordapp.com/attachments/693517202879414312/784506168730976305/present.png}",
-    "aliases": []
-  },
-  "friend": {
-    "value": 375000,
-    "link": "https://cdn.discordapp.com/attachments/693517202879414312/784506168730976305/present.png}",
-    "aliases": []
-  },
-  "rev": {
-    "value": 2000000,
-    "link": "https://cdn.discordapp.com/emojis/573150370579087360.png}",
-    "aliases": []
+  "friend's gift": {
+    "value": 550000,
+    "link": "https://cdn.discordapp.com/attachments/693517202879414312/784506168730976305/present.png",
+    "aliases": ["friend", "gift", "friendsgift"],
+    "showname": "friend's gift"
   },
   "reversal": {
-    "value": 2000000,
-    "link": "https://cdn.discordapp.com/emojis/573150370579087360.png}",
-    "aliases": []
+    "value": 3000000,
+    "link": "https://cdn.discordapp.com/emojis/573150370579087360.png",
+    "aliases": ["rev", "reverse"],
+    "showname": "reversal"
   },
-  "jacky": {
-    "value": 4000000,
-    "link": "https://cdn.discordapp.com/emojis/758662115841802271.png}",
-    "aliases": []
+  "jacky o' lanty": {
+    "value": 5000000,
+    "link": "https://cdn.discordapp.com/emojis/758662115841802271.png",
+    "aliases": ["jack", "jacky", "lantern"],
+    "showname": "jacky o' lanty"
   },
-  "lantern": {
-    "value": 4000000,
-    "link": "https://cdn.discordapp.com/emojis/758662115841802271.png}",
-    "aliases": []
+  "multi phallic": {
+    "value": 1200000,
+    "link": "https://cdn.discordapp.com/emojis/841123648911966219.gif",
+    "aliases": ["multi", "multiphallic", "multipp", "discodildo"],
+    "showname": "multi phallic"
   },
-  "multi": {
-    "value": 4250000,
-    "link": "https://cdn.discordapp.com/emojis/841123648911966219.gif}",
-    "aliases": []
+  "pepe medal": {
+    "value": 5500000,
+    "link": "https://cdn.discordapp.com/emojis/716848179022397462.gif",
+    "aliases": ["pem", "pepem", "pepemedal", "medal"],
+    "showname": "pepe medal"
   },
-  "multipp": {
-    "value": 4250000,
-    "link": "https://cdn.discordapp.com/emojis/841123648911966219.gif}",
-    "aliases": []
+  "aetheryx' flower": {
+    "value": 6500000,
+    "link": "https://cdn.discordapp.com/emojis/834800790605791232.png",
+    "aliases": ["flower", "aetheryx"],
+    "showname": "aetheryx' flower"
   },
-  "discodildo": {
-    "value": 4250000,
-    "link": "https://cdn.discordapp.com/emojis/841123648911966219.gif}",
-    "aliases": []
-  },
-  "pem": {
-    "value": 5350000,
-    "link": "https://cdn.discordapp.com/emojis/716848179022397462.gif}",
-    "aliases": []
-  },
-  "pepem": {
-    "value": 5350000,
-    "link": "https://cdn.discordapp.com/emojis/716848179022397462.gif}",
-    "aliases": []
-  },
-  "pepemedal": {
-    "value": 5350000,
-    "link": "https://cdn.discordapp.com/emojis/716848179022397462.gif}",
-    "aliases": []
-  },
-  "medal": {
-    "value": 5350000,
-    "link": "https://cdn.discordapp.com/emojis/716848179022397462.gif}",
-    "aliases": []
-  },
-  "flower": {
-    "value": 10000000,
-    "link": "https://cdn.discordapp.com/emojis/834800790605791232.png}",
-    "aliases": []
-  },
-  "aetheryx": {
-    "value": 10000000,
-    "link": "https://cdn.discordapp.com/emojis/834800790605791232.png}",
-    "aliases": []
-  },
-  "lotto": {
+  "lottery ticket": {
     "value": 30000000,
-    "link": "https://cdn.discordapp.com/emojis/828630267983298580.png}",
-    "aliases": []
+    "link": "https://cdn.discordapp.com/emojis/828630267983298580.png",
+    "aliases": ["lotto", "lottery", "lotteryticket", "ticket"],
+    "showname": "lottery ticket"
   },
-  "lottery": {
-    "value": 30000000,
-    "link": "https://cdn.discordapp.com/emojis/828630267983298580.png}",
-    "aliases": []
-  },
-  "ticket": {
-    "value": 30000000,
-    "link": "https://cdn.discordapp.com/emojis/828630267983298580.png}",
-    "aliases": []
-  },
-  "tro": {
-    "value": 45000000,
-    "link": "https://cdn.discordapp.com/emojis/718136428219072662.gif}",
-    "aliases": []
-  },
-  "pepet": {
-    "value": 45000000,
-    "link": "https://cdn.discordapp.com/emojis/718136428219072662.gif}",
-    "aliases": []
-  },
-  "pepetrophy": {
-    "value": 45000000,
-    "link": "https://cdn.discordapp.com/emojis/718136428219072662.gif}",
-    "aliases": []
+  "pepe trophy": {
+    "value": 40000000,
+    "link": "https://cdn.discordapp.com/emojis/718136428219072662.gif",
+    "aliases": ["tro", "trophy", "pepetrophy", "pepet", "pepetro"],
+    "showname": "pepe trophy"
   },
   "beard": {
     "value": 30000000,
-    "link": "https://cdn.discordapp.com/emojis/834815537921916938.png}",
-    "aliases": []
+    "link": "https://cdn.discordapp.com/emojis/834815537921916938.png",
+    "aliases": [],
+    "showname": "beard"
   },
   "mel": {
-    "value": 30000000,
-    "link": "https://cdn.discordapp.com/emojis/834815537921916938.png}",
-    "aliases": []
+    "value": 18000000,
+    "link": "https://cdn.discordapp.com/emojis/834815537921916938.png",
+    "aliases": [],
+    "showname": "mel"
   },
-  "melmsie": {
-    "value": 30000000,
-    "link": "https://cdn.discordapp.com/emojis/834815537921916938.png}",
-    "aliases": []
+  "melmsie's beard": {
+    "value": 18000000,
+    "link": "https://cdn.discordapp.com/emojis/834815537921916938.png",
+    "aliases": ["mel", "melmsie", "beard", "melmsiesbeard"],
+    "showname": "melmsie's beard"
   },
-  "badoszcard": {
-    "value": 10000000,
-    "link": "https://cdn.discordapp.com/emojis/869294028385038354.gif}",
-    "aliases": []
+  "badosz's card": {
+    "value": 60000000,
+    "link": "https://cdn.discordapp.com/emojis/869294028385038354.gif",
+    "aliases": ["badoszcard", "card", "badosz", "bad"],
+    "showname": "badosz's card"
   },
-  "card": {
-    "value": 10000000,
-    "link": "https://cdn.discordapp.com/emojis/869294028385038354.gif}",
-    "aliases": []
+  "bolt cutters": {
+    "value": 200000000,
+    "link": "https://cdn.discordapp.com/emojis/831023529255632898.png",
+    "aliases": ["bolt", "cutters", "boltcutters", "boltcutter"],
+    "showname": "bolt cutters"
   },
-  "badosz": {
-    "value": 10000000,
-    "link": "https://cdn.discordapp.com/emojis/869294028385038354.gif}",
-    "aliases": []
-  },
-  "cutters": {
-    "value": 250000000,
-    "link": "https://cdn.discordapp.com/emojis/831023529255632898.png}",
-    "aliases": []
-  },
-  "bolt": {
-    "value": 250000000,
-    "link": "https://cdn.discordapp.com/emojis/831023529255632898.png}",
-    "aliases": []
-  },
-  "boltcutters": {
-    "value": 250000000,
-    "link": "https://cdn.discordapp.com/emojis/831023529255632898.png}",
-    "aliases": []
-  },
-  "pepecr": {
-    "value": 222000000,
-    "link": "https://cdn.discordapp.com/emojis/834862725120917544.png}",
-    "aliases": []
-  },
-  "pepecrown": {
-    "value": 222000000,
-    "link": "https://cdn.discordapp.com/emojis/834862725120917544.png}",
-    "aliases": []
-  },
-  "crown": {
-    "value": 222000000,
-    "link": "https://cdn.discordapp.com/emojis/834862725120917544.png}",
-    "aliases": []
+  "pepe crown": {
+    "value": 220000000,
+    "link": "https://cdn.discordapp.com/emojis/834862725120917544.png",
+    "aliases": ["pepecr", "crown", "pepecrown"],
+    "showname": "pepe crown"
   },
   "blob": {
-    "value": 2500000000,
-    "link": "https://cdn.discordapp.com/emojis/639826478866890773.gif}",
-    "aliases": []
+    "value": 1750000000,
+    "link": "https://cdn.discordapp.com/emojis/639826478866890773.gif",
+    "aliases": ["blo"],
+    "showname": "blob"
   },
-  "blo": {
-    "value": 2500000000,
-    "link": "https://cdn.discordapp.com/emojis/639826478866890773.gif}",
-    "aliases": []
-  },
-  "eye": {
-    "value": 700000000,
-    "link": "https://cdn.discordapp.com/emojis/787964747848089642.gif}",
-    "aliases": []
-  },
-  "oddeye": {
-    "value": 700000000,
-    "link": "https://cdn.discordapp.com/emojis/787964747848089642.gif}",
-    "aliases": []
-  },
-  "odd": {
-    "value": 700000000,
-    "link": "https://cdn.discordapp.com/emojis/787964747848089642.gif}",
-    "aliases": []
+  "odd eye": {
+    "value": 800000000,
+    "link": "https://cdn.discordapp.com/emojis/787964747848089642.gif",
+    "aliases": ["odd", "eye", "oddeye"],
+    "showname": "odd eye"
   },
   "worm": {
-    "value": 2000,
-    "link": "https://cdn.discordapp.com/emojis/864261394920898600.png}",
-    "aliases": []
-  },
-  "fish": {
     "value": 3000,
-    "link": "https://cdn.discordapp.com/emojis/714980893999104051.png}",
-    "aliases": []
+    "link": "https://cdn.discordapp.com/emojis/864261394920898600.png",
+    "aliases": [],
+    "showname": "worm"
   },
-  "common": {
-    "value": 3000,
-    "link": "https://cdn.discordapp.com/emojis/714980893999104051.png}",
-    "aliases": []
-  },
-  "sku": {
+  "common fish": {
     "value": 6000,
-    "link": "https://cdn.discordapp.com/emojis/861390875992522792.png}",
-    "aliases": []
+    "link": "https://cdn.discordapp.com/emojis/714980893999104051.png",
+    "aliases": ["fish", "common", "commonfish"],
+    "showname": "common fish"
   },
   "skunk": {
-    "value": 6000,
-    "link": "https://cdn.discordapp.com/emojis/861390875992522792.png}",
-    "aliases": []
-  },
-  "rabb": {
-    "value": 6000,
-    "link": "https://cdn.discordapp.com/emojis/860665246875254784.png}",
-    "aliases": []
+    "value": 7000,
+    "link": "https://cdn.discordapp.com/emojis/861390875992522792.png",
+    "aliases": ["sku"],
+    "showname": "skunk"
   },
   "rabbit": {
-    "value": 6000,
-    "link": "https://cdn.discordapp.com/emojis/860665246875254784.png}",
-    "aliases": []
+    "value": 10000,
+    "link": "https://cdn.discordapp.com/emojis/860665246875254784.png",
+    "aliases": ["rab", "rabb"],
+    "showname": "rabbit"
   },
   "ant": {
-    "value": 10000,
-    "link": "https://cdn.discordapp.com/emojis/864220608865763378.png}",
-    "aliases": []
-  },
-  "stick": {
-    "value": 10000,
-    "link": "https://cdn.discordapp.com/emojis/864568819795755038.gif}",
-    "aliases": []
+    "value": 20000,
+    "link": "https://cdn.discordapp.com/emojis/864220608865763378.png",
+    "aliases": [],
+    "showname": "ant"
   },
   "stickbug": {
-    "value": 10000,
-    "link": "https://cdn.discordapp.com/emojis/864568819795755038.gif}",
-    "aliases": []
+    "value": 25000,
+    "link": "https://cdn.discordapp.com/emojis/864568819795755038.gif",
+    "aliases": ["bug", "stick"],
+    "showname": "stickbug"
   },
   "duck": {
-    "value": 10000,
-    "link": "https://cdn.discordapp.com/emojis/573152043125178368.png}",
-    "aliases": []
-  },
-  "quackquack": {
-    "value": 10000,
-    "link": "https://cdn.discordapp.com/emojis/573152043125178368.png}",
-    "aliases": []
+    "value": 13000,
+    "link": "https://cdn.discordapp.com/emojis/573152043125178368.png",
+    "aliases": ["quackquack"],
+    "showname": "duck"
   },
   "deer": {
-    "value": 10000,
-    "link": "https://cdn.discordapp.com/emojis/832746231100473384.png}",
-    "aliases": []
-  },
-  "lady": {
-    "value": 15000,
-    "link": "https://cdn.discordapp.com/emojis/863198415822389268.png}",
-    "aliases": []
+    "value": 130000,
+    "link": "https://cdn.discordapp.com/emojis/832746231100473384.png",
+    "aliases": [],
+    "showname": "deer"
   },
   "ladybug": {
-    "value": 15000,
-    "link": "https://cdn.discordapp.com/emojis/863198415822389268.png}",
-    "aliases": []
-  },
-  "rare": {
-    "value": 15000,
-    "link": "https://cdn.discordapp.com/emojis/714980949149876316.png}",
-    "aliases": []
+    "value": 25000,
+    "link": "https://cdn.discordapp.com/emojis/863198415822389268.png",
+    "aliases": ["lady"],
+    "showname": "ladybug"
   },
   "rarefish": {
-    "value": 15000,
-    "link": "https://cdn.discordapp.com/emojis/714980949149876316.png}",
-    "aliases": []
+    "value": 18000,
+    "link": "https://cdn.discordapp.com/emojis/714980949149876316.png",
+    "aliases": [],
+    "showname": "rarefish"
   },
   "boar": {
-    "value": 20000,
-    "link": "https://cdn.discordapp.com/emojis/861584585656762398.png}",
-    "aliases": []
+    "value": 29000,
+    "link": "https://cdn.discordapp.com/emojis/861584585656762398.png",
+    "aliases": [],
+    "showname": "boar"
   },
-  "exotic": {
-    "value": 30000,
-    "link": "https://cdn.discordapp.com/emojis/714981026245378088.png}",
-    "aliases": []
+  "exotic fish": {
+    "value": 40000,
+    "link": "https://cdn.discordapp.com/emojis/714981026245378088.png",
+    "aliases": ["exotic", "exoticfish", "exo"],
+    "showname": "exotic fish"
   },
-  "exo": {
-    "value": 30000,
-    "link": "https://cdn.discordapp.com/emojis/714981026245378088.png}",
-    "aliases": []
-  },
-  "exoticfish": {
-    "value": 30000,
-    "link": "https://cdn.discordapp.com/emojis/714981026245378088.png}",
-    "aliases": []
-  },
-  "legendary": {
-    "value": 50000,
-    "link": "https://cdn.discordapp.com/emojis/714981071548186684.png}",
-    "aliases": []
-  },
-  "legend": {
-    "value": 50000,
-    "link": "https://cdn.discordapp.com/emojis/714981071548186684.png}",
-    "aliases": []
-  },
-  "legendaryfish": {
-    "value": 50000,
-    "link": "https://cdn.discordapp.com/emojis/714981071548186684.png}",
-    "aliases": []
-  },
-  "jelly": {
-    "value": 50000,
-    "link": "https://cdn.discordapp.com/emojis/841405707739463708.png}",
-    "aliases": []
+  "legendary fish": {
+    "value": 350000,
+    "link": "https://cdn.discordapp.com/emojis/714981071548186684.png",
+    "aliases": ["legendaryfish", "legend", "legendary"],
+    "showname": "legendary fish"
   },
   "jellyfish": {
-    "value": 50000,
-    "link": "https://cdn.discordapp.com/emojis/841405707739463708.png}",
-    "aliases": []
-  },
-  "drag": {
-    "value": 60000,
-    "link": "https://cdn.discordapp.com/emojis/861390869696741396.png}",
-    "aliases": []
+    "value": 55000,
+    "link": "https://cdn.discordapp.com/emojis/841405707739463708.png",
+    "aliases": ["jelly"],
+    "showname": "jellyfish"
   },
   "dragon": {
-    "value": 60000,
-    "link": "https://cdn.discordapp.com/emojis/861390869696741396.png}",
-    "aliases": []
+    "value": 170000,
+    "link": "https://cdn.discordapp.com/emojis/861390869696741396.png",
+    "aliases": ["drag"],
+    "showname": "dragon"
   },
   "spider": {
-    "value": 80000,
-    "link": "https://cdn.discordapp.com/emojis/864261394944884746.png}",
-    "aliases": []
+    "value": 150000,
+    "link": "https://cdn.discordapp.com/emojis/864261394944884746.png",
+    "aliases": [],
+    "showname": "spider"
   },
   "kraken": {
     "value": 1000000,
-    "link": "https://cdn.discordapp.com/emojis/860228238956429313.png}",
-    "aliases": []
+    "link": "https://cdn.discordapp.com/emojis/860228238956429313.png",
+    "aliases": ["krak"],
+    "showname": "kraken"
   },
-  "krak": {
-    "value": 1000000,
-    "link": "https://cdn.discordapp.com/emojis/860228238956429313.png}",
-    "aliases": []
+  "daily box": {
+    "value": 160000,
+    "link": "https://cdn.discordapp.com/emojis/861390900219478037.gif",
+    "aliases": ["dailybox", "dai", "daily"],
+    "showname": "daily box"
   },
-  "dai": {
-    "value": 80000,
-    "link": "https://cdn.discordapp.com/emojis/861390900219478037.gif}",
-    "aliases": []
+  "normie box": {
+    "value": 160000,
+    "link": "https://cdn.discordapp.com/emojis/861390901405679626.gif",
+    "aliases": ["normiebox", "normie", "norm", "nor"],
+    "showname": "normie box"
   },
-  "daily": {
-    "value": 80000,
-    "link": "https://cdn.discordapp.com/emojis/861390900219478037.gif}",
-    "aliases": []
+  "meme box": {
+    "value": 650000,
+    "link": "https://cdn.discordapp.com/emojis/861390901300953118.gif",
+    "aliases": ["memebox", "meme"],
+    "showname": "meme box"
   },
-  "dailybox": {
-    "value": 80000,
-    "link": "https://cdn.discordapp.com/emojis/861390900219478037.gif}",
-    "aliases": []
-  },
-  "nor": {
-    "value": 60000,
-    "link": "https://cdn.discordapp.com/emojis/861390901405679626.gif}",
-    "aliases": []
-  },
-  "norm": {
-    "value": 60000,
-    "link": "https://cdn.discordapp.com/emojis/861390901405679626.gif}",
-    "aliases": []
-  },
-  "normie": {
-    "value": 60000,
-    "link": "https://cdn.discordapp.com/emojis/861390901405679626.gif}",
-    "aliases": []
-  },
-  "normiebox": {
-    "value": 60000,
-    "link": "https://cdn.discordapp.com/emojis/861390901405679626.gif}",
-    "aliases": []
-  },
-  "meme": {
-    "value": 150000,
-    "link": "https://cdn.discordapp.com/emojis/861390901300953118.gif}",
-    "aliases": []
-  },
-  "memebox": {
-    "value": 150000,
-    "link": "https://cdn.discordapp.com/emojis/861390901300953118.gif}",
-    "aliases": []
-  },
-  "dank": {
-    "value": 300000,
-    "link": "https://cdn.discordapp.com/emojis/861390901049425950.gif}",
-    "aliases": []
-  },
-  "dankbox": {
-    "value": 300000,
-    "link": "https://cdn.discordapp.com/emojis/861390901049425950.gif}",
-    "aliases": []
+  "dank box": {
+    "value": 1500000,
+    "link": "https://cdn.discordapp.com/emojis/861390901049425950.gif",
+    "aliases": ["dankbox", "dank"],
+    "showname": "dank box"
   },
   "giftbox": {
-    "value": 375000,
-    "link": "https://cdn.discordapp.com/attachments/693517202879414312/784506168730976305/present.png}",
-    "aliases": []
+    "value": 400000,
+    "link": "https://cdn.discordapp.com/attachments/693517202879414312/784506168730976305/present.png",
+    "aliases": [],
+    "showname": "giftbox"
   },
-  "god": {
-    "value": 7500000,
-    "link": "https://cdn.discordapp.com/emojis/861390900688977950.gif}",
-    "aliases": []
+  "god box": {
+    "value": 30000000,
+    "link": "https://cdn.discordapp.com/emojis/861390900688977950.gif",
+    "aliases": ["godbox", "god"],
+    "showname": "god box"
   },
-  "godbox": {
-    "value": 7500000,
-    "link": "https://cdn.discordapp.com/emojis/861390900688977950.gif}",
-    "aliases": []
+  "ban hammer": {
+    "value": 1500000,
+    "link": "https://cdn.discordapp.com/emojis/834080273942577242.png",
+    "aliases": ["banhammer", "ban", "hammer"],
+    "showname": "ban hammer"
   },
-  "hammer": {
-    "value": 1125000,
-    "link": "https://cdn.discordapp.com/emojis/834080273942577242.png}",
-    "aliases": []
+  "used diaper": {
+    "value": 1500000,
+    "link": "https://cdn.discordapp.com/emojis/834080273947295764.png",
+    "aliases": ["used", "useddiaper", "diaper"],
+    "showname": "used diaper"
   },
-  "ban": {
-    "value": 1125000,
-    "link": "https://cdn.discordapp.com/emojis/834080273942577242.png}",
-    "aliases": []
-  },
-  "diaper": {
-    "value": 2000000,
-    "link": "https://cdn.discordapp.com/emojis/834080273947295764.png}",
-    "aliases": []
-  },
-  "useddiaper": {
-    "value": 2000000,
-    "link": "https://cdn.discordapp.com/emojis/834080273947295764.png}",
-    "aliases": []
-  },
-  "taco": {
+  "crunchy taco": {
     "value": 4000000,
-    "link": "https://cdn.discordapp.com/emojis/834128399551299624.png}",
-    "aliases": []
-  },
-  "crunchytaco": {
-    "value": 4000000,
-    "link": "https://cdn.discordapp.com/emojis/834128399551299624.png}",
-    "aliases": []
+    "link": "https://cdn.discordapp.com/emojis/834128399551299624.png",
+    "aliases": ["crunchy", "taco", "crunchytaco"],
+    "showname": "crunchy taco"
   },
   "baby": {
     "value": 2500000,
-    "link": "https://cdn.discordapp.com/emojis/834080273942577192.png}",
-    "aliases": []
+    "link": "https://cdn.discordapp.com/emojis/834080273942577192.png",
+    "aliases": ["bebe"],
+    "showname": "baby"
   },
-  "bebe": {
-    "value": 2500000,
-    "link": "https://cdn.discordapp.com/emojis/834080273942577192.png}",
-    "aliases": []
+  "tip jar": {
+    "value": 5500000,
+    "link": "https://cdn.discordapp.com/emojis/834080273926717471.png",
+    "aliases": ["tip", "jar", "tipjar"],
+    "showname": "tip jar"
   },
-  "tipjar": {
-    "value": 8500000,
-    "link": "https://cdn.discordapp.com/emojis/834080273926717471.png}",
-    "aliases": []
-  },
-  "tip": {
-    "value": 8500000,
-    "link": "https://cdn.discordapp.com/emojis/834080273926717471.png}",
-    "aliases": []
-  },
-  "jar": {
-    "value": 8500000,
-    "link": "https://cdn.discordapp.com/emojis/834080273926717471.png}",
-    "aliases": []
-  },
-  "button": {
-    "value": 1750000,
-    "link": "https://cdn.discordapp.com/emojis/834080273922523196.png}",
-    "aliases": []
-  },
-  "likebutton": {
-    "value": 1750000,
-    "link": "https://cdn.discordapp.com/emojis/834080273922523196.png}",
-    "aliases": []
-  },
-  "like": {
-    "value": 1750000,
-    "link": "https://cdn.discordapp.com/emojis/834080273922523196.png}",
-    "aliases": []
+  "like button": {
+    "value": 2000000,
+    "link": "https://cdn.discordapp.com/emojis/834080273922523196.png",
+    "aliases": ["like", "button", "likebutton"],
+    "showname": "like button"
   },
   "ammo": {
-    "value": 6000000,
-    "link": "https://cdn.discordapp.com/emojis/834080273964073035.png}",
-    "aliases": []
+    "value": 3000000,
+    "link": "https://cdn.discordapp.com/emojis/834080273964073035.png",
+    "aliases": [],
+    "showname": "ammo"
   },
-  "bait": {
-    "value": 4750000,
-    "link": "https://cdn.discordapp.com/emojis/834080273951883305.png}",
-    "aliases": []
-  },
-  "fishingbait": {
-    "value": 4750000,
-    "link": "https://cdn.discordapp.com/emojis/834080273951883305.png}",
-    "aliases": []
+  "fishing bait": {
+    "value": 3000000,
+    "link": "https://cdn.discordapp.com/emojis/834080273951883305.png",
+    "aliases": ["fishingbait", "bait"],
+    "showname": "fishing bait"
   },
   "whiskey": {
-    "value": 3250000,
-    "link": "https://cdn.discordapp.com/emojis/834080273922523197.png}",
-    "aliases": []
+    "value": 4500000,
+    "link": "https://cdn.discordapp.com/emojis/834080273922523197.png",
+    "aliases": [],
+    "showname": "whiskey"
   },
-  "mask": {
-    "value": 4250000,
-    "link": "https://cdn.discordapp.com/emojis/834080273889099797.png}",
-    "aliases": []
+  "robbers mask": {
+    "value": 5000000,
+    "link": "https://cdn.discordapp.com/emojis/834080273889099797.png",
+    "aliases": ["robbersmask", "robber", "mask"],
+    "showname": "robbers mask"
   },
-  "robbersmask": {
-    "value": 4250000,
-    "link": "https://cdn.discordapp.com/emojis/834080273889099797.png}",
-    "aliases": []
-  },
-  "robber": {
-    "value": 4250000,
-    "link": "https://cdn.discordapp.com/emojis/834080273889099797.png}",
-    "aliases": []
-  },
-  "badge": {
-    "value": 2750000,
-    "link": "https://cdn.discordapp.com/emojis/834080273918197810.png}",
-    "aliases": []
-  },
-  "policebadge": {
-    "value": 2750000,
-    "link": "https://cdn.discordapp.com/emojis/834080273918197810.png}",
-    "aliases": []
-  },
-  "police": {
-    "value": 2750000,
-    "link": "https://cdn.discordapp.com/emojis/834080273918197810.png}",
-    "aliases": []
+  "police badge": {
+    "value": 3000000,
+    "link": "https://cdn.discordapp.com/emojis/834080273918197810.png",
+    "aliases": ["policebadge", "police", "badge"],
+    "showname": "police badge"
   },
   "aplus": {
     "value": 5500000,
-    "link": "https://cdn.discordapp.com/emojis/834080273930387486.png}",
-    "aliases": []
+    "link": "https://cdn.discordapp.com/emojis/834080273930387486.png",
+    "aliases": ["plus", "a+"],
+    "showname": "aplus"
   },
-  "plus": {
-    "value": 5500000,
-    "link": "https://cdn.discordapp.com/emojis/834080273930387486.png}",
-    "aliases": []
+  "musical note": {
+    "value": 3000000,
+    "link": "https://cdn.discordapp.com/emojis/834080273892376686.png",
+    "aliases": ["musicalnote", "musical", "music", "note"],
+    "showname": "musical note"
   },
-  "musical": {
-    "value": 3500000,
-    "link": "https://cdn.discordapp.com/emojis/834080273892376686.png}",
-    "aliases": []
-  },
-  "note": {
-    "value": 3500000,
-    "link": "https://cdn.discordapp.com/emojis/834080273892376686.png}",
-    "aliases": []
-  },
-  "coupon": {
+  "shop coupon": {
     "value": 6500000,
-    "link": "https://cdn.discordapp.com/emojis/834080273892114482.png}",
-    "aliases": []
+    "link": "https://cdn.discordapp.com/emojis/834080273892114482.png",
+    "aliases": ["shopcoupon", "coupon", "shop"],
+    "showname": "shop coupon"
   },
-  "energy": {
-    "value": 4125000,
-    "link": "https://cdn.discordapp.com/emojis/834080273909284924.png}",
-    "aliases": []
-  },
-  "energydrink": {
-    "value": 4125000,
-    "link": "https://cdn.discordapp.com/emojis/834080273909284924.png}",
-    "aliases": []
-  },
-  "drink": {
-    "value": 4125000,
-    "link": "https://cdn.discordapp.com/emojis/834080273909284924.png}",
-    "aliases": []
+  "energy drink": {
+    "value": 4500000,
+    "link": "https://cdn.discordapp.com/emojis/834080273909284924.png",
+    "aliases": ["energydrink", "energy", "drink"],
+    "showname": "energy drink"
   },
   "poster": {
-    "value": 6750000,
-    "link": "https://cdn.discordapp.com/emojis/834080273964072995.png}",
-    "aliases": []
+    "value": 6000000,
+    "link": "https://cdn.discordapp.com/emojis/834080273964072995.png",
+    "aliases": [],
+    "showname": "poster"
   },
   "binary": {
-    "value": 5250000,
-    "link": "https://cdn.discordapp.com/emojis/834080273896833074.png}",
-    "aliases": []
+    "value": 5500000,
+    "link": "https://cdn.discordapp.com/emojis/834080273896833074.png",
+    "aliases": [],
+    "showname": "binary"
   },
-  "stonk": {
-    "value": 12500000,
-    "link": "https://cdn.discordapp.com/emojis/834080273796694057.png}",
-    "aliases": []
+  "stonk machine": {
+    "value": 10000000,
+    "link": "https://cdn.discordapp.com/emojis/834080273796694057.png",
+    "aliases": ["stonk", "machine", "stonkmachine"],
+    "showname": "stonk machine"
   },
-  "stonkmachine": {
-    "value": 12500000,
-    "link": "https://cdn.discordapp.com/emojis/834080273796694057.png}",
-    "aliases": []
+  "santas bag": {
+    "value": 17000000,
+    "link": "https://cdn.discordapp.com/emojis/862415055622635560.png",
+    "aliases": ["santasbag", "santabag", "bag", "sbag"],
+    "showname": "santas bag"
   },
-  "machine": {
-    "value": 12500000,
-    "link": "https://cdn.discordapp.com/emojis/834080273796694057.png}",
-    "aliases": []
+  "stackofcash": {
+    "value": 10000000,
+    "link": "https://cdn.discordapp.com/emojis/862774540895125584.png",
+    "aliases": ["stack", "cash", "stackofcash"],
+    "showname": "stackofcash"
   },
-  "sbag": {
-    "value": 29500000,
-    "link": "https://cdn.discordapp.com/emojis/862415055622635560.png}",
-    "aliases": []
+  "pet collar": {
+    "value": 8000000,
+    "link": "https://cdn.discordapp.com/emojis/834080273951883304.png",
+    "aliases": ["pet", "collar", "petcollar"],
+    "showname": "pet collar"
   },
-  "santa": {
-    "value": 29500000,
-    "link": "https://cdn.discordapp.com/emojis/862415055622635560.png}",
-    "aliases": []
+  "meme pills": {
+    "value": 7500000,
+    "link": "https://cdn.discordapp.com/emojis/834080273804689409.png",
+    "aliases": ["memepills", "pill", "pills", "memepill", "meme pill"],
+    "showname": "meme pills"
   },
-  "santabag": {
-    "value": 29500000,
-    "link": "https://cdn.discordapp.com/emojis/862415055622635560.png}",
-    "aliases": []
-  },
-  "bag": {
-    "value": 29500000,
-    "link": "https://cdn.discordapp.com/emojis/862415055622635560.png}",
-    "aliases": []
-  },
-  "stack": {
-    "value": 10500000,
-    "link": "https://cdn.discordapp.com/emojis/862774540895125584.png}",
-    "aliases": []
-  },
-  "cash": {
-    "value": 10500000,
-    "link": "https://cdn.discordapp.com/emojis/862774540895125584.png}",
-    "aliases": []
-  },
-  "collar": {
-    "value": 8500000,
-    "link": "https://cdn.discordapp.com/emojis/834080273951883304.png}",
-    "aliases": []
-  },
-  "pet": {
-    "value": 8500000,
-    "link": "https://cdn.discordapp.com/emojis/834080273951883304.png}",
-    "aliases": []
-  },
-  "pills": {
+  "law degree": {
     "value": 7000000,
-    "link": "https://cdn.discordapp.com/emojis/834080273804689409.png}",
-    "aliases": []
-  },
-  "memepills": {
-    "value": 7000000,
-    "link": "https://cdn.discordapp.com/emojis/834080273804689409.png}",
-    "aliases": []
-  },
-  "law": {
-    "value": 6000000,
-    "link": "https://cdn.discordapp.com/emojis/834080273963548733.png}",
-    "aliases": []
-  },
-  "lawdegree": {
-    "value": 6000000,
-    "link": "https://cdn.discordapp.com/emojis/834080273963548733.png}",
-    "aliases": []
-  },
-  "degree": {
-    "value": 6000000,
-    "link": "https://cdn.discordapp.com/emojis/834080273963548733.png}",
-    "aliases": []
+    "link": "https://cdn.discordapp.com/emojis/834080273963548733.png",
+    "aliases": ["lawdegree", "law", "degree"],
+    "showname": "law degree"
   },
   "vaccine": {
-    "value": 7500000,
-    "link": "https://cdn.discordapp.com/emojis/834080273981243412.png}",
-    "aliases": []
+    "value": 8000000,
+    "link": "https://cdn.discordapp.com/emojis/834080273981243412.png",
+    "aliases": [],
+    "showname": "vaccine"
   },
-  "beaker": {
+  "beaker of sus fluid": {
     "value": 6000000,
-    "link": "https://cdn.discordapp.com/emojis/834080273918197811.png}",
-    "aliases": []
+    "link": "https://cdn.discordapp.com/emojis/834080273918197811.png",
+    "aliases": ["sus", "fluid", "beaker", "susbeaker"],
+    "showname": "beaker of sus fluid"
   },
-  "susbeaker": {
-    "value": 6000000,
-    "link": "https://cdn.discordapp.com/emojis/834080273918197811.png}",
-    "aliases": []
+  "ectoplasm": {
+    "value": 3000000,
+    "link": "https://cdn.discordapp.com/emojis/834080273889099796.png",
+    "aliases": ["ecto"],
+    "showname": "ectoplasm"
   },
-  "fluid": {
-    "value": 6000000,
-    "link": "https://cdn.discordapp.com/emojis/834080273918197811.png}",
-    "aliases": []
-  },
-  "sus": {
-    "value": 6000000,
-    "link": "https://cdn.discordapp.com/emojis/834080273918197811.png}",
-    "aliases": []
-  },
-  "ecto": {
-    "value": 2750000,
-    "link": "https://cdn.discordapp.com/emojis/834080273889099796.png}",
-    "aliases": []
-  },
-  "phone": {
-    "value": 750,
-    "link": "https://cdn.discordapp.com/emojis/830509316632346625.png}",
-    "aliases": []
-  },
-  "cell": {
-    "value": 750,
-    "link": "https://cdn.discordapp.com/emojis/830509316632346625.png}",
-    "aliases": []
+  "cell phone": {
+    "value": 1000,
+    "link": "https://cdn.discordapp.com/emojis/830509316632346625.png",
+    "aliases": ["phone", "cell", "cellphone"],
+    "showname": "cell phone"
   },
   "padlock": {
+    "value": 1250,
+    "link": "https://cdn.discordapp.com/emojis/830509316900651059.png",
+    "aliases": ["pad", "lock"],
+    "showname": "padlock"
+  },
+  "fake id": {
     "value": 750,
-    "link": "https://cdn.discordapp.com/emojis/830509316900651059.png}",
-    "aliases": []
+    "link": "https://cdn.discordapp.com/emojis/573151946911776798.png",
+    "aliases": ["fake", "id", "fakeid"],
+    "showname": "fake id"
   },
-  "pad": {
-    "value": 750,
-    "link": "https://cdn.discordapp.com/emojis/830509316900651059.png}",
-    "aliases": []
+  "robbers wishlist": {
+    "value": 25000,
+    "link": "https://cdn.discordapp.com/emojis/723641465615548447.png",
+    "aliases": ["robbers", "wish", "list", "wishlist"],
+    "showname": "robbers wishlist"
   },
-  "lock": {
-    "value": 750,
-    "link": "https://cdn.discordapp.com/emojis/830509316900651059.png}",
-    "aliases": []
-  },
-  "fake": {
-    "value": 750,
-    "link": "https://cdn.discordapp.com/emojis/573151946911776798.png}",
-    "aliases": []
-  },
-  "fakeid": {
-    "value": 750,
-    "link": "https://cdn.discordapp.com/emojis/573151946911776798.png}",
-    "aliases": []
-  },
-  "wishlist": {
-    "value": 1000,
-    "link": "https://cdn.discordapp.com/emojis/723641465615548447.png}",
-    "aliases": []
-  },
-  "list": {
-    "value": 1000,
-    "link": "https://cdn.discordapp.com/emojis/723641465615548447.png}",
-    "aliases": []
-  },
-  "wish": {
-    "value": 1000,
-    "link": "https://cdn.discordapp.com/emojis/723641465615548447.png}",
-    "aliases": []
-  },
-  "sand": {
-    "value": 1000,
-    "link": "https://cdn.discordapp.com/emojis/830509316901175366.png}",
-    "aliases": []
+  "box of sand": {
+    "value": 1250,
+    "link": "https://cdn.discordapp.com/emojis/830509316901175366.png",
+    "aliases": ["boxofsand", "sandbox", "sand", "box"],
+    "showname": "box of sand"
   },
   "laptop": {
-    "value": 1500,
-    "link": "https://cdn.discordapp.com/emojis/830509316674813974.png}",
-    "aliases": []
-  },
-  "lap": {
-    "value": 1500,
-    "link": "https://cdn.discordapp.com/emojis/830509316674813974.png}",
-    "aliases": []
+    "value": 2000,
+    "link": "https://cdn.discordapp.com/emojis/830509316674813974.png",
+    "aliases": ["lap"],
+    "showname": "laptop"
   },
   "apple": {
-    "value": 4000,
-    "link": "https://cdn.discordapp.com/emojis/714980848692101130.png}",
-    "aliases": []
-  },
-  "app": {
-    "value": 4000,
-    "link": "https://cdn.discordapp.com/emojis/714980848692101130.png}",
-    "aliases": []
-  },
-  "land": {
-    "value": 4000,
-    "link": "https://cdn.discordapp.com/emojis/573151813130518548.png}",
-    "aliases": []
+    "value": 4500,
+    "link": "https://cdn.discordapp.com/emojis/714980848692101130.png",
+    "aliases": ["app"],
+    "showname": "apple"
   },
   "landmine": {
-    "value": 4000,
-    "link": "https://cdn.discordapp.com/emojis/573151813130518548.png}",
-    "aliases": []
-  },
-  "mine": {
-    "value": 4000,
-    "link": "https://cdn.discordapp.com/emojis/573151813130518548.png}",
-    "aliases": []
-  },
-  "alc": {
-    "value": 6000,
-    "link": "https://cdn.discordapp.com/emojis/709406795097047090.png}",
-    "aliases": []
+    "value": 4500,
+    "link": "https://cdn.discordapp.com/emojis/573151813130518548.png",
+    "aliases": ["land", "mine"],
+    "showname": "landmine"
   },
   "alcohol": {
-    "value": 6000,
-    "link": "https://cdn.discordapp.com/emojis/709406795097047090.png}",
-    "aliases": []
+    "value": 10000,
+    "link": "https://cdn.discordapp.com/emojis/709406795097047090.png",
+    "aliases": ["alc"],
+    "showname": "alcohol"
   },
-  "horse": {
-    "value": 7500,
-    "link": "https://cdn.discordapp.com/attachments/693517202879414312/813911606907240448/horseshoe.png}",
-    "aliases": []
+  "lucky horseshoe": {
+    "value": 9000,
+    "link": "https://cdn.discordapp.com/attachments/693517202879414312/813911606907240448/horseshoe.png",
+    "aliases": ["luckyhorseshoe", "lucky", "shoe", "horse", "hoe"],
+    "showname": "lucky horseshoe"
   },
-  "shoe": {
-    "value": 7500,
-    "link": "https://cdn.discordapp.com/attachments/693517202879414312/813911606907240448/horseshoe.png}",
-    "aliases": []
+  "fidget spinner": {
+    "value": 10000,
+    "link": "https://cdn.discordapp.com/emojis/573150030030962699.png",
+    "aliases": ["fidgetspinner", "fidget", "spinner", "spin"],
+    "showname": "fidget spinner"
   },
-  "hoe": {
-    "value": 7500,
-    "link": "https://cdn.discordapp.com/attachments/693517202879414312/813911606907240448/horseshoe.png}",
-    "aliases": []
-  },
-  "spin": {
-    "value": 7500,
-    "link": "https://cdn.discordapp.com/emojis/573150030030962699.png}",
-    "aliases": []
-  },
-  "spinner": {
-    "value": 7500,
-    "link": "https://cdn.discordapp.com/emojis/573150030030962699.png}",
-    "aliases": []
-  },
-  "life": {
-    "value": 7500,
-    "link": "https://cdn.discordapp.com/emojis/573151706641203210.png}",
-    "aliases": []
-  },
-  "saver": {
-    "value": 7500,
-    "link": "https://cdn.discordapp.com/emojis/573151706641203210.png}",
-    "aliases": []
-  },
-  "tide": {
-    "value": 7500,
-    "link": "https://cdn.discordapp.com/emojis/573149030951944202.png}",
-    "aliases": []
+  "life saver": {
+    "value": 15000,
+    "link": "https://cdn.discordapp.com/emojis/573151706641203210.png",
+    "aliases": ["lifesaver", "life", "saver"],
+    "showname": "life saver"
   },
   "tidepod": {
-    "value": 7500,
-    "link": "https://cdn.discordapp.com/emojis/573149030951944202.png}",
-    "aliases": []
-  },
-  "pod": {
-    "value": 7500,
-    "link": "https://cdn.discordapp.com/emojis/573149030951944202.png}",
-    "aliases": []
+    "value": 10000,
+    "link": "https://cdn.discordapp.com/emojis/573149030951944202.png",
+    "aliases": ["tide", "pod"],
+    "showname": "tidepod"
   },
   "shovel": {
-    "value": 10000,
-    "link": "https://cdn.discordapp.com/emojis/842779232819478619.png}",
-    "aliases": []
+    "value": 12000,
+    "link": "https://cdn.discordapp.com/emojis/842779232819478619.png",
+    "aliases": ["shov"],
+    "showname": "shovel"
   },
-  "pole": {
-    "value": 10000,
-    "link": "https://cdn.discordapp.com/emojis/714998788397465732.png}",
-    "aliases": []
+  "fishing pole": {
+    "value": 12000,
+    "link": "https://cdn.discordapp.com/emojis/714998788397465732.png",
+    "aliases": ["fishingpole", "fishing", "pole"],
+    "showname": "fishing pole"
   },
-  "fishingpole": {
-    "value": 10000,
-    "link": "https://cdn.discordapp.com/emojis/714998788397465732.png}",
-    "aliases": []
+  "hunting rifle": {
+    "value": 12000,
+    "link": "https://cdn.discordapp.com/emojis/714543607947722822.png",
+    "aliases": ["huntingrifle", "hunting", "rifle"],
+    "showname": "hunting rifle"
   },
-  "rifle": {
-    "value": 10000,
-    "link": "https://cdn.discordapp.com/emojis/714543607947722822.png}",
-    "aliases": []
-  },
-  "hunting": {
-    "value": 10000,
-    "link": "https://cdn.discordapp.com/emojis/714543607947722822.png}",
-    "aliases": []
-  },
-  "huntingrife": {
-    "value": 10000,
-    "link": "https://cdn.discordapp.com/emojis/714543607947722822.png}",
-    "aliases": []
-  },
-  "bomb": {
-    "value": 12500,
-    "link": "https://cdn.discordapp.com/emojis/688456543372312594.png}",
-    "aliases": []
-  },
-  "coin": {
-    "value": 12500,
-    "link": "https://cdn.discordapp.com/emojis/688456543372312594.png}",
-    "aliases": []
-  },
-  "coinbomb": {
-    "value": 12500,
-    "link": "https://cdn.discordapp.com/emojis/688456543372312594.png}",
-    "aliases": []
-  },
-  "cheese": {
+  "coin bomb": {
     "value": 15000,
-    "link": "https://cdn.discordapp.com/emojis/830509316933943307.png}",
-    "aliases": []
+    "link": "https://cdn.discordapp.com/emojis/688456543372312594.png",
+    "aliases": ["coinbomb", "coin", "bomb"],
+    "showname": "coin bomb"
   },
-  "che": {
-    "value": 15000,
-    "link": "https://cdn.discordapp.com/emojis/830509316933943307.png}",
-    "aliases": []
+  "shredded cheese": {
+    "value": 25000,
+    "link": "https://cdn.discordapp.com/emojis/830509316933943307.png",
+    "aliases": ["che", "shredded", "shreddedcheese", "shreddedche"],
+    "showname": "shredded cheese"
   }
 }
