@@ -1,10 +1,13 @@
 const {
     MessageEmbed
 } = require('discord.js')
+const commas = require('../../functions').commas
 module.exports = {
     name: 'itemcalc',
     aliases: ['icalc'],
     async execute(message, args, cmd, client) {
+        const profileModel = require("../../models/itemSchema");
+        ItemArr = await profileModel.find()
         let tofind = args.join(' ').split('+')
         if (!args[0]) return message.channel.send('Invalid args.')
         let input = []
@@ -47,15 +50,8 @@ module.exports = {
 
 }
 
-function getInfoObj(p, client) {
-    const e = client.itemdb.data
-    return Object.values(e)[Object.keys(e).findIndex(e => {
-        return e === p.toLowerCase()
-    })] || Object.values(e).find(e => {
-        return e.aliases.includes(p.toLowerCase())
-    })
-}
-
-function commas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+function getInfoObj(p) {
+return ItemArr.find(e=>{
+    return e.showname == p || e.aliases.includes(p)
+})
 }
