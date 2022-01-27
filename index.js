@@ -33,7 +33,5 @@ mongoose
 process.on('unhandledRejection', (err) => {
     console.log(err)
 })
-const Database = require("easy-json-database");
-client.itemdb = new Database("./item_db.json");
 
 client.login(token);
