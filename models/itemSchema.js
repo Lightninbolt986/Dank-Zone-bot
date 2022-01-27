@@ -3,7 +3,7 @@ const itemSchema = new mongoose.Schema({
     value: {
         type: Number
     },
-    link: {
+    emoji: {
         type: String
     },
     aliases: {

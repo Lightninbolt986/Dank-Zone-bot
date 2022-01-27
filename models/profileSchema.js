@@ -9,7 +9,11 @@ const profileSchema = new mongoose.Schema({
     type: Number,
     require:true,
     default:0
-  }
+  },
+  channelID:{
+    type: String,
+    unique: true
+   }
 })
 
 const model = mongoose.model(`DZProileModels`, profileSchema);

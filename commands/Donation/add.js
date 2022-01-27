@@ -23,7 +23,7 @@ module.exports = {
         }
 
         //user
-        const user = await message.mentions.members.first() || message.guild.users.cache.get(args[0])
+        const user = await message.mentions.members.first() || message.guild.users?.cache.get(args[0])
         if (!user) {
             return message.reply(`${emotes.cross} You need to mention someone.`)
         }
