@@ -25,10 +25,10 @@ module.exports = {
                 return
             }
             money.push(`${(obj.value*num)}`)
-            input.push(`${num} ${obj.showname}`)
+            input.push(`${obj.emoji} \`${num}x\` ${obj.showname} - **\`⏣ ${commas(obj.value*num)}\`**`)
         });
 
-        input = input.join(' + ')
+        input = input.join('\n')
         invalid = invalid.join(', ')
         if (!money.length) return message.channel.send('None of the items provided could be identified')
         const finalMoney = money.reduce((a, b) => parseInt(a) + parseInt(b))
@@ -36,13 +36,15 @@ module.exports = {
             .setTitle('**__Item Price Calculator__**')
             .setColor(15158332)
             .setAuthor({
-                name: 'Dank Zone',
-                iconURL: 'https:\/\/cdn.discordapp.com\/icons\/738394656211206234\/a_d7f833ef802f1f5341bdece5e3796c07.gif'
+                name: `${message.guild.name}`,
+                iconURL: message.guild.iconURL() ? `${message.guild.iconURL({ dynamic: true })}` : `${client.user.displayAvatarURL()}`
             })
-            .addField('**Input**', `\`\`\`ml\n${input}\`\`\``)
-            .addField('**Price of each Item**', `\`\`\`ml\n${commas(money.join(' + '))}\`\`\``)
-        if (invalid.length) embed.addField('**Invalid items**', `\`\`\`ml\n${invalid}\`\`\``)
-        embed.addField('**Total Price**', `\`\`\`ml\n${commas(finalMoney)}\`\`\``)
+            .setDescription(`**Input**\n${input}`)
+            //.addField('**Input**', `\`\`\`ml\n${input}\`\`\``)
+            //.addField('**Price of each Item**', `\`\`\`ml\n${commas(money.join(' + '))}\`\`\``)
+        
+        if (invalid.length) embed.addField('Invalid items', `\`\`\`js\n${invalid}\`\`\``)
+        embed.addField('Total Price', `\`\`\`js\n⏣ ${commas(finalMoney)}\`\`\``)
         message.channel.send({
             embeds: [embed]
         })
