@@ -9,6 +9,6 @@
 ## Commands
 > → `dnote` - Note donations for every user  
 > → `donate` - Command to request donations by users with quick host support.  
-> → `itemcalc` - Easily calculate huge number of items for donations.
-> → `setvalue` - Change values of items for donation.
-> → `amarishop` - Amarishop system using amari API.
+> → `itemcalc` - Easily calculate huge number of items for donations.  
+> → `setvalue` - Change values of items for donation.  
+> → `amarishop` - Amarishop system using amari API.  
