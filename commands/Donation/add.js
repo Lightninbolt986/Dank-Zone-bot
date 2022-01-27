@@ -87,7 +87,9 @@ module.exports = {
         message.reply({
             embeds: [new Discord.MessageEmbed()
                 .setDescription(`${emotes.moon} **Donation Noted.**\n${emotes.replycont} User : \`${user.user.tag}\`\n${emotes.replycont} Amount : \`⏣ ${commas(amount.toString())}\`\n${emotes.reply} Total Donation : \`⏣ ${commas(response.dono)}\``)
-                .setFooter({text:`ID: ${user.id}`})
+                .setFooter({
+                    text: `ID: ${user.id}`
+                })
                 .setColor("BLURPLE")
             ],
             allowedMentions: {
@@ -100,7 +102,9 @@ module.exports = {
         donationlog.send({
             embeds: [new Discord.MessageEmbed()
                 .setDescription(`${emotes.moon} **Donation Logs.**\n${emotes.replycont} User : \`${user.user.tag}\`\n${emotes.replycont} Amount : \`⏣ ${commas(amount.toString())}\`\n${emotes.replycont} Total Donation : \`⏣ ${commas(response.dono)}\`\n${emotes.replycont} Noted by : \`${message.author.tag}\`\n${emotes.reply} Link : [Jump](${message.url})`)
-                .setFooter({text:`ID: ${user.id}`})
+                .setFooter({
+                    text: `ID: ${user.id}`
+                })
                 .setColor("BLURPLE")
             ],
         })

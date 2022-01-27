@@ -21,7 +21,7 @@ module.exports = {
             const item = arr.join(' ')
             const obj = getInfoObj(item, client)
             if (!obj) {
-                if(item) return invalid.push(item)
+                if (item) return invalid.push(item)
                 return
             }
             money.push(`${(obj.value*num)}`)
@@ -42,7 +42,7 @@ module.exports = {
             .addField('**Input**', `\`\`\`ml\n${input}\`\`\``)
             .addField('**Price of each Item**', `\`\`\`ml\n${commas(money.join(' + '))}\`\`\``)
         if (invalid.length) embed.addField('**Invalid items**', `\`\`\`ml\n${invalid}\`\`\``)
-            embed.addField('**Total Price**', `\`\`\`ml\n${commas(finalMoney)}\`\`\``)
+        embed.addField('**Total Price**', `\`\`\`ml\n${commas(finalMoney)}\`\`\``)
         message.channel.send({
             embeds: [embed]
         })
@@ -51,7 +51,7 @@ module.exports = {
 }
 
 function getInfoObj(p) {
-return ItemArr.find(e=>{
-    return e.showname == p || e.aliases.includes(p)
-})
+    return ItemArr.find(e => {
+        return e.showname == p || e.aliases.includes(p)
+    })
 }
