@@ -1,9 +1,6 @@
 # Dank-Zone-bot
 > Custom bot made for [dank zone](https://discord.gg/e5zNpjzB)
 
-# Wadafek — Made in 5 days
-> A simple mini-game bot which supports both text and slash inputs. Made for Hackathon hosted by [Documatic](https://documatic.com)
-
 ## Made by
 > → *[lightninbolt986#3111](https://discordapp.com/users/543031298130837510)*  
 > → *[Senpai#2473](https://discordapp.com/users/654639494481313792)*  
