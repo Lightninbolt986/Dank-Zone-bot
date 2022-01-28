@@ -38,19 +38,21 @@ module.exports = {
         if (!money.length) return message.channel.send('None of the items provided could be identified')
         const finalMoney = money.reduce((a, b) => parseInt(a) + parseInt(b))
         const embed = new MessageEmbed()
-            .setTitle('**__Item Price Calculator__**')
+            .setTitle('Item Price Calculator')
             .setColor("BLURPLE")
+            .setDescription(`${input}\n\n\`\`\`yaml\nTotal Value: ⏣ ${commas(finalMoney)}\n\`\`\``)
+            /*
             .setAuthor({
                 name: `${message.guild.name}`,
                 iconURL: message.guild.iconURL() ? `${message.guild.iconURL({ dynamic: true })}` : `${client.user.displayAvatarURL()}`
-            })
-            .setDescription(`${input}\n\n\`\`\`yaml\nTotal Value: ⏣ ${commas(finalMoney)}\n\`\`\``)
+            })*/
+           
         //.addField('**Input**', `\`\`\`ml\n${input}\`\`\``)
         //.addField('**Price of each Item**', `\`\`\`ml\n${commas(money.join(' + '))}\`\`\``)
 
         if (invalid.length) embed.addField('Invalid items', `\`\`\`js\n${invalid}\`\`\``)
         //embed.addField('Total Price', `\`\`\`js\n⏣ ${commas(finalMoney)}\`\`\``)
-        message.channel.send({
+        message.reply({
             embeds: [embed]
         })
     }
