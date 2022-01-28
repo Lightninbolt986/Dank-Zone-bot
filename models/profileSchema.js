@@ -7,13 +7,22 @@ const profileSchema = new mongoose.Schema({
   },
   dono: {
     type: Number,
-    require:true,
-    default:0
+    require: true,
+    default: 0
   },
-  channelID:{
+  channelID: {
     type: String,
     unique: true
-   }
+  },
+  is_afk: {
+    type: Boolean
+  },
+  afkreason: {
+    type: String,
+  },
+  afkPings:{
+    type:Array,
+  }
 })
 
 const model = mongoose.model(`DZProileModels`, profileSchema);
