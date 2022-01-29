@@ -27,16 +27,18 @@ module.exports = async (d, client, message) => {
         let string = ''
         let maxed = false
         const msg = profileData.afkPings.map((i, ind, arr) => {
-            if (string.length < 3700) string = string + `- <@${i.pinger}> [pinged you in](${i.url}) <#${i.channel}> <t:${i.time}:R>\n**Message Content**: ${i.content}\n`
-            else if(maxed == false) {
+            if (string.length < 3700) string = string + `<:bp_dot:918074237992988722> <@${i.pinger}> - <t:${i.time}:R> [Jump to message](${i.url})\n**Message Content**: *${i.content}*\n\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\n`
+            else if (maxed == false) {
                 maxed = true;
-                if(!(arr.length - (ind + 1) == 0)){
-                string = string + `+${(arr.length - (ind + 1))} more`}
+                if (!(arr.length - (ind + 1) == 0)) {
+                    string = string + `+${(arr.length - (ind + 1))} more`
+                }
             }
         })
         if (msg) message.reply({
-            embeds: [new Discord.MessageEmbed().setDescription(textSmall(string, 4000))]
+            embeds: [new Discord.MessageEmbed().setDescription(textSmall(string, 4000)).setColor("BLURPLE")]
         })
+
         profileData.afkPings = []
         await profileData.save()
     }
@@ -63,13 +65,27 @@ module.exports = async (d, client, message) => {
                 new: true
             })
             e.save()
-            message.channel.send(`\`${u.tag}\` is currently afk for: \`${pingUser.afkreason}\``, {
-                allowedMentions: {
-                    roles: [],
-                    users: [],
-                    parse: []
-                }
-            })
+            const afk = new Discord.MessageEmbed()
+                .setAuthor({
+                    name: `${u.username} is AFK`,
+                    iconURL: u.displayAvatarURL({
+                        dynamic: true
+                    })
+                })
+                .setDescription(`${pingUser.afkreason}`)
+                .setColor("BLURPLE")
+
+            message.reply({
+                    embeds: [afk],
+                    allowedMentions: {
+                        repliedUser: true
+                    }
+                })
+                .then(m => {
+                    setTimeout(() => {
+                        m.delete()
+                    }, 20000)
+                })
         }
     });
     if ((!message.content.startsWith(prefix) || message.author.bot)) return
