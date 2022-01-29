@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 const textSmall = require('../../functions').TextSmall
 module.exports = async (d, client, message) => {
     const prefix = process.env.prefix
-    if(message.author.bot) return
+    if (message.author.bot) return
     const profileModel = require("../../models/profileSchema");
     let profileData;
     try {
@@ -24,11 +24,18 @@ module.exports = async (d, client, message) => {
         message.channel.send('Welcome back `' + message.author.username + '`! You are no longer afk.');
         profileData.is_afk = false;
         profileData.afkreason = null;
-        const msg = profileData.afkPings.map(i => {
-            return `- <@${i.pinger}> [pinged you in](${i.url}) <#${i.channel}> <t:${i.time}:R>\n**Message Content**: ${i.content}`
-        }).join('\n')
-        if(msg) message.reply({
-            embeds: [new Discord.MessageEmbed().setDescription(textSmall(msg, 4000))]
+        let string = ''
+        let maxed = false
+        const msg = profileData.afkPings.map((i, ind, arr) => {
+            if (string.length < 3700) string = string + `- <@${i.pinger}> [pinged you in](${i.url}) <#${i.channel}> <t:${i.time}:R>\n**Message Content**: ${i.content}\n`
+            else if(maxed == false) {
+                maxed = true;
+                if(!(arr.length - (ind + 1) == 0)){
+                string = string + `+${(arr.length - (ind + 1))} more`}
+            }
+        })
+        if (msg) message.reply({
+            embeds: [new Discord.MessageEmbed().setDescription(textSmall(string, 4000))]
         })
         profileData.afkPings = []
         await profileData.save()
