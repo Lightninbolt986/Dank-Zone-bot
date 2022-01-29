@@ -22,12 +22,13 @@ module.exports = async (d, client, message) => {
     }
     if (profileData.is_afk) {
         message.channel.send('Welcome back `' + message.author.username + '`! You are no longer afk.');
+        message.member.setNickname(`${message.member?.nickname?.replace('[AFK] ', '') || message.author.username}`).catch(() => {})
         profileData.is_afk = false;
         profileData.afkreason = null;
         let string = ''
         let maxed = false
-        const msg = profileData.afkPings.map((i, ind, arr) => {
-            if (string.length < 3700) string = string + `<:bp_dot:918074237992988722> <@${i.pinger}> - <t:${i.time}:R> [Jump to message](${i.url})\n**Message Content**: *${i.content}*\n\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\n`
+        profileData.afkPings.map((i, ind, arr) => {
+            if (string.length < 3700) string = string + `<:bp_dot:918074237992988722> <@${i.pinger}> - <t:${i.time}:R> [Jump to message](${i.url})\n**Message Content**: *${i.content}*\n━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\n`
             else if (maxed == false) {
                 maxed = true;
                 if (!(arr.length - (ind + 1) == 0)) {
@@ -35,7 +36,7 @@ module.exports = async (d, client, message) => {
                 }
             }
         })
-        if (msg) message.reply({
+        if (string) message.reply({
             embeds: [new Discord.MessageEmbed().setDescription(textSmall(string, 4000)).setColor("BLURPLE")]
         })
 
