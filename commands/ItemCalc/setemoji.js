@@ -1,8 +1,8 @@
 const commas = require('../../functions').commas
 const emotes = require("../../data/emotes.json")
 module.exports = {
-    name: 'setvalue',
-    aliases: ['setv'],
+    name: 'setemoji',
+    aliases: ['sete'],
     async execute(message, args) {
 
         const staffrole = message.guild.roles.cache.get("768724931806101524")
@@ -18,19 +18,19 @@ module.exports = {
 
         const profileModel = require("../../models/itemSchema");
         ItemArr = await profileModel.find()
-        const num = parseInt(args.shift())
-        if (!num || isNaN(num)) return message.reply('Invalid usage. Use `<amount> <item>` to set the value.')
+        const emo = (args.shift())
+        if (!emo) return message.reply('Invalid usage. Use `<emoji> <item>` to set the value.')
         const item = args.join(' ')
         const obj = getInfoObj(item)
         if (!obj) return message.reply('Invalid item.')
         const i = await profileModel.findOneAndUpdate({
             showname: obj.showname
         }, {
-            value: num
+            emoji: emo
         },{
             new:true
         })
-        message.reply(`Set the value of ${obj.showname} to ${commas(num)}`)
+        message.reply(`Set the emoji of ${obj.showname} to ${(emo)}`)
     }
 }
 

@@ -1,6 +1,8 @@
 const Discord = require('discord.js')
+const textSmall = require('../../functions').TextSmall
 module.exports = async (d, client, message) => {
     const prefix = process.env.prefix
+    if(message.author.bot) return
     const profileModel = require("../../models/profileSchema");
     let profileData;
     try {
@@ -25,8 +27,8 @@ module.exports = async (d, client, message) => {
         const msg = profileData.afkPings.map(i => {
             return `- <@${i.pinger}> [pinged you in](${i.url}) <#${i.channel}> <t:${i.time}:R>\n**Message Content**: ${i.content}`
         }).join('\n')
-        message.reply({
-            embeds: [new Discord.MessageEmbed().setDescription(msg)]
+        if(msg) message.reply({
+            embeds: [new Discord.MessageEmbed().setDescription(textSmall(msg, 4000))]
         })
         profileData.afkPings = []
         await profileData.save()
@@ -46,7 +48,7 @@ module.exports = async (d, client, message) => {
                         pinger: message.author.id,
                         url: message.url,
                         channel: message.channel.id,
-                        content: message.content,
+                        content: textSmall(message.content, 100),
                         time: (Date.now() / 1000).toFixed(0)
                     }
                 }
