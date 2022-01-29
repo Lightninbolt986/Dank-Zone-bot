@@ -25,11 +25,13 @@ module.exports = async (d, client, message) => {
         profileData.is_afk = false;
         profileData.afkreason = null;
         const msg = profileData.afkPings.map(i => {
-            return `- <@${i.pinger}> [pinged you in](${i.url}) <#${i.channel}> <t:${i.time}:R>\n**Message Content**: ${i.content}`
-        }).join('\n')
+            return `<:bp_dot:918074237992988722> <@${i.pinger}> - <t:${i.time}:R> [Jump to message](${i.url})\n**Message Content**: *${i.content}*`
+        }).join('\n\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\n')
+        
         if(msg) message.reply({
-            embeds: [new Discord.MessageEmbed().setDescription(textSmall(msg, 4000))]
+            embeds: [new Discord.MessageEmbed().setColor("BLURPLE").setDescription(textSmall(msg, 4000))]
         })
+        
         profileData.afkPings = []
         await profileData.save()
     }
@@ -56,13 +58,13 @@ module.exports = async (d, client, message) => {
                 new: true
             })
             e.save()
-            message.channel.send(`\`${u.tag}\` is currently afk for: \`${pingUser.afkreason}\``, {
-                allowedMentions: {
-                    roles: [],
-                    users: [],
-                    parse: []
-                }
-            })
+                    const afk = new Discord.MessageEmbed()
+                    .setAuthor(`${u.username} is AFK`, u.displayAvatarURL({ dynamic: true }))
+                    .setDescription(`${pingUser.afkreason}`)
+                    .setColor("BLURPLE")
+
+            message.reply({ embeds: [afk], allowedMentions: { repliedUser: true } })
+                    .then(m => { setTimeout(() => { m.delete() }, 20000) })
         }
     });
     if ((!message.content.startsWith(prefix) || message.author.bot)) return
