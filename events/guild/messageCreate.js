@@ -37,7 +37,7 @@ module.exports = async (d, client, message) => {
             }
         })
         if (string) message.reply({
-            embeds: [new Discord.MessageEmbed().setDescription(textSmall(string, 4000)).setColor("BLURPLE")]
+            embeds: [new Discord.MessageEmbed().setDescription(textSmall(string, 4000)).setTitle('Pings received while AFK').setColor("BLURPLE")]
         })
 
         profileData.afkPings = []
