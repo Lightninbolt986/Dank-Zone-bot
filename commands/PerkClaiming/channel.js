@@ -127,7 +127,7 @@ module.exports = {
                     });
                 } else if (args[0] == "add") {
                     if (!channelData) return message.reply(`${emotes.cross} You need to create a channel first to add members.`);
-                    if (channelData.MembersID.length >= chnlData.num) return message.reply(`${emotes.cross} Max members reachers - ${chnlData.num}`)
+                    if (channelData.MembersID.length >= chnlData.num) return message.reply(`${emotes.cross} Max members attained - \`${chnlData.num}\``)
                     const channel = await message.guild.channels.fetch(
                         channelData.ChannelID
                     );
@@ -173,7 +173,7 @@ module.exports = {
                             .setColor("#00ff9d")
                             .setTimestamp()
                             .setDescription(
-                                "Added <@" + user.id + "> to your channel <#" + channel.id + ">. It now has " + newChanelData.MembersID.length + '/' + chnlData.num + 'members.'
+                                "Added <@" + user.id + "> to your channel <#" + channel.id + ">. It now has \`" + newChanelData.MembersID.length + '\`/\`' + chnlData.num + '\` members.'
                             )
                         ]
                     })
@@ -216,7 +216,7 @@ module.exports = {
                             .setColor("#00ff9d")
                             .setTimestamp()
                             .setDescription(
-                                "Removed <@" + user.id + "> from your channel <#" + channel.id + ">. It now has " + newChanelData.MembersID.length + '/' + chnlData.num + 'members.'
+                                "Removed <@" + user.id + "> from your channel <#" + channel.id + ">. It now has \`" + newChanelData.MembersID.length + '\`/\`' + chnlData.num + '\` members.'
                             )
                         ]
                     })
