@@ -1,58 +1,79 @@
 const Discord = require("discord.js");
-const {
-    Permissions
-} = require("discord.js");
+const { Permissions } = require("discord.js");
 const emotes = require("../../data/emotes.json")
+
+const chnlcreate = ['<@&782502710099836929>', '<@&745564909810614343>', '<@&772005497762218024>']
 module.exports = {
     name: "channel",
     aliases: ["chnl"],
     async execute(message, args, cmd, client, d, profileData) {
-        const chnlData = require("../../functions").CanGetChannelWithInfo(
-            message.member
-        );
+
+        const chnlData = require("../../functions").CanGetChannelWithInfo(message.member);
+
         if (!chnlData.has) {
-            return message.channel.send("You ineligible to get a channel.");
+            return message.reply({
+                embeds: [
+                    new Discord.MessageEmbed()
+                        .setColor(16724533)
+                        .setThumbnail('https://images-ext-2.discordapp.net/external/TLvA6RAOze3jWk_uDiSWQaZr6q7pNze0sCMmy4dImak/https/media.discordapp.net/attachments/909344848761466881/914774250219511848/1qrL0Pk2sWbLmTcHh5f4iMTW8478OwNG4P8BP9wIb9U4JZUAAAAASUVORK5CYII.png')
+                        .setAuthor({
+                            name: "Missing roles",
+                            iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
+                        })
+                        .setDescription(`Oops! You need any of the following roles to create a channel\n\n>>> <:nx_tick:910049767910952961> ${chnlcreate.join('\n<:nx_tick:910049767910952961> ')}`)
+                ]
+            })
         } else {
             const channelModel = require("../../models/channelSchema");
-            const channelData = await channelModel.findOne({
-                OwnerID: message.author.id,
-            });
+            const channelData = await channelModel.findOne({ OwnerID: message.author.id });
+
             if (["rename", "add", "reset", "remove", "create"].includes(args[0])) {
                 if (args[0] == "create") {
                     if (channelData) {
-                        return message.channel.send("You already have a channel.");
+                        return message.reply({
+                            embeds: [
+                                new Discord.MessageEmbed()
+                                    .setColor(16724533)
+                                    //.setThumbnail('https://images-ext-2.discordapp.net/external/TLvA6RAOze3jWk_uDiSWQaZr6q7pNze0sCMmy4dImak/https/media.discordapp.net/attachments/909344848761466881/914774250219511848/1qrL0Pk2sWbLmTcHh5f4iMTW8478OwNG4P8BP9wIb9U4JZUAAAAASUVORK5CYII.png')
+                                    .setAuthor({
+                                        name: "Channel exists.",
+                                        iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
+                                    })
+                                    .setDescription(`Looks like you already have a channel.\n**Channel**: <#${channelData.ChannelID}>`)
+                            ]
+                        })
                     }
                     args.shift();
-                    if (!args[0]) return message.channel.send("No name");
+                    if (!args[0]) return message.reply(`${emotes.cross} Please provide a name for your channel.`);
                     //entire else is creating a channel
                     const channel = await message.guild.channels.create(
                         `┃${args.join(" ")}`, {
-                            type: "GUILD_TEXT",
-                            reason: "Claimed private channel",
-                            permissionOverwrites: [{
-                                    id: message.guild.id,
-                                    deny: [Permissions.FLAGS.VIEW_CHANNEL],
-                                },
-                                {
-                                    id: message.author.id,
-                                    allow: [
-                                        Permissions.FLAGS.VIEW_CHANNEL,
-                                        Permissions.FLAGS.SEND_MESSAGES,
-                                        Permissions.FLAGS.ADD_REACTIONS,
-                                        Permissions.FLAGS.ATTACH_FILES,
-                                        Permissions.FLAGS.USE_EXTERNAL_EMOJIS,
-                                        Permissions.FLAGS.USE_EXTERNAL_STICKERS,
-                                        Permissions.FLAGS.MANAGE_MESSAGES,
-                                    ],
-                                }, {
-                                    id: '789886892807946240',
-                                    allow: [
-                                        Permissions.FLAGS.VIEW_CHANNEL,
-                                        Permissions.FLAGS.SEND_MESSAGES
-                                    ]
-                                }
+                        type: "GUILD_TEXT",
+                        reason: "Claimed private channel",
+                        permissionOverwrites: [{
+                            id: message.guild.id,
+                            deny: [Permissions.FLAGS.VIEW_CHANNEL],
+                        },
+                        {
+                            id: message.author.id,
+                            allow: [
+                                Permissions.FLAGS.VIEW_CHANNEL,
+                                Permissions.FLAGS.SEND_MESSAGES,
+                                Permissions.FLAGS.ADD_REACTIONS,
+                                Permissions.FLAGS.ATTACH_FILES,
+                                Permissions.FLAGS.USE_EXTERNAL_EMOJIS,
+                                Permissions.FLAGS.USE_EXTERNAL_STICKERS,
+                                Permissions.FLAGS.MANAGE_MESSAGES,
                             ],
+                        }, {
+                            id: '789886892807946240',
+                            allow: [
+                                Permissions.FLAGS.VIEW_CHANNEL,
+                                Permissions.FLAGS.SEND_MESSAGES
+                            ]
                         }
+                        ],
+                    }
                     );
                     channel.setParent("936222310262792192", {
                         lockPermissions: false,
@@ -70,16 +91,12 @@ module.exports = {
                         })
                         .setAuthor({
                             name: "Channel Created!",
-                            iconURL: "https://cdn.discordapp.com/emojis/784643622439616523.png?v=1",
+                            iconURL: "https://cdn.discordapp.com/emojis/910049767910952961.png",
                         })
-                        .setColor(2485953)
+                        .setColor("#00ff9d")
                         .setTimestamp()
-                        .setDescription(
-                            "Your **Private Channel** has been **successfully** created!\n**Channel**: <#" +
-                            channel.id +
-                            ">"
-                        );
-                    message.channel.send({
+                        .setDescription("Your **Private Channel** has been **successfully** created!\n**Channel**: <#" + channel.id + ">");
+                    message.reply({
                         embeds: [embed],
                     });
                 } else if (args[0] == "rename") {
@@ -98,35 +115,31 @@ module.exports = {
                         })
                         .setAuthor({
                             name: "Channel Renamed!",
-                            iconURL: "https://cdn.discordapp.com/emojis/784643622439616523.png?v=1",
+                            iconURL: "https://cdn.discordapp.com/emojis/910049767910952961.png",
                         })
-                        .setColor(2485953)
+                        .setColor("#00ff9d")
                         .setTimestamp()
                         .setDescription(
                             `Name of your channel has been changed from #${channel.name} to <#${channel.id}>!`
                         );
-                    message.channel.send({
+                    message.reply({
                         embeds: [embed],
                     });
                 } else if (args[0] == "add") {
-                    if (!channelData) return message.channel.send("No channel");
-                    if (channelData.MembersID.length >= chnlData.num) return message.channel.send(`Max members reachers - ${chnlData.num}`)
+                    if (!channelData) return message.reply(`${emotes.cross} You need to create a channel first to add members.`);
+                    if (channelData.MembersID.length >= chnlData.num) return message.reply(`${emotes.cross} Max members reachers - ${chnlData.num}`)
                     const channel = await message.guild.channels.fetch(
                         channelData.ChannelID
                     );
-                    const user =
-                        (await message.mentions.members.first()) ||
-                        message.guild.members.cache.get(args[0]);
+                    const user = (await message.mentions.members.first()) || message.guild.members.cache.get(args[0]);
                     if (!user) {
-                        return message.reply(
-                            `${emotes.cross} You need to mention someone.`
-                        );
+                        return message.reply(`${emotes.cross} You need to mention someone.`)
                     }
                     if (channelData.MembersID.includes(user.id)) {
-                        return message.reply('They are alr in the channel');
+                        return message.reply(`${emotes.cross} That user is already in your channel.`)
                     }
                     if (user.id === message.author.id) {
-                        return message.reply('You can\'t add yourself in your channel.')
+                        return message.reply(`${emotes.cross} You cannot add yourself in your channel.`)
                     }
                     channel.permissionOverwrites.edit(user.id, {
                         VIEW_CHANNEL: true,
@@ -137,8 +150,8 @@ module.exports = {
                         USE_EXTERNAL_STICKERS: true,
                     });
                     const userPermissionsIn = user.permissionsIn(channel).has(Permissions.FLAGS.ADMINISTRATOR)
-                    if (userPermissionsIn) return message.channel.send('They have admin permissions and already have access to your channel')
-                    if (user.user.bot) return message.channel.send('They are a bot and already have access to your channel')
+                    if (userPermissionsIn) return message.reply(`${emotes.cross} That user has admin perms and can already access your channel.`)
+                    if (user.user.bot) return message.reply(`${emotes.cross} That user is a bot and can already access your channel.`)
                     const newChanelData = await channelModel.findOneAndUpdate({
                         ChannelID: channel.id
                     }, {
@@ -148,50 +161,73 @@ module.exports = {
                     }, {
                         new: true
                     })
-                    message.channel.send(
-                        "Added <@" + user.id + "> to your channel <#" + channel.id + ">. It now has " + newChanelData.MembersID.length + ' members.'
-                    )
+                    message.reply({
+                        embeds: [new Discord.MessageEmbed()
+                            .setFooter({
+                                text: message.author.tag,
+                            })
+                            .setAuthor({
+                                name: "User Added!",
+                                iconURL: "https://cdn.discordapp.com/emojis/910049767910952961.png",
+                            })
+                            .setColor("#00ff9d")
+                            .setTimestamp()
+                            .setDescription(
+                                "Added <@" + user.id + "> to your channel <#" + channel.id + ">. It now has " + newChanelData.MembersID.length + '/' + chnlData.num + 'members.'
+                            )
+                        ]
+                    })
 
                 } else if (args[0] == "remove") {
-                    if (!channelData) return message.channel.send("No channel");
+                    if (!channelData) return message.reply(`${emotes.cross} You need to have a channel first to remove members.`);
                     const channel = await message.guild.channels.fetch(
                         channelData.ChannelID
                     );
-                    const user =
-                        (await message.mentions.members.first()) ||
-                        message.guild.members.cache.get(args[0]);
+                    const user = (await message.mentions.members.first()) || message.guild.members.cache.get(args[0]);
                     if (!user) {
-                        return message.reply(
-                            `${emotes.cross} You need to mention someone.`
-                        );
+                        return message.reply(`${emotes.cross} You need to mention someone.`)
                     }
                     if (user.id === message.author.id) {
-                        return message.reply('You can\'t remove yourself from your channel.')
+                        return message.reply(`${emotes.cross} You cannot add yourself in your channel.`)
                     }
                     channel.permissionOverwrites.delete(user.id);
                     const userPermissionsIn = user.permissionsIn(channel).has(Permissions.FLAGS.ADMINISTRATOR)
-                    if (userPermissionsIn) return message.channel.send('They have admin permissions cannot be removed.')
-                    if (user.user.bot) return message.channel.send('They are a bot and cannot be removed.')
+
+                    if (userPermissionsIn) return message.reply(`${emotes.cross} That user has admin perms and cannot be removed from your channel.`)
+                    if (user.user.bot) return message.reply(`${emotes.cross} That user is a bot and cannot be removed from your channel.`)
+
                     if (!channelData.MembersID.includes(user.id)) {
-                        return message.reply('They are not in the channel');
+                        return message.reply(`${emotes.cross} That user is not in your channel.`)
                     }
-                    const newChanelData = await channelModel.findOneAndUpdate({
-                        ChannelID: channel.id
-                    }, {
-                        $pull: {
-                            MembersID: user.id
-                        }
-                    }, {
-                        new: true
+                    const newChanelData = await channelModel.findOneAndUpdate(
+                        { ChannelID: channel.id },
+                        { $pull: { MembersID: user.id } },
+                        { new: true }
+                    )
+                    message.reply({
+                        embeds: [new Discord.MessageEmbed()
+                            .setFooter({
+                                text: message.author.tag,
+                            })
+                            .setAuthor({
+                                name: "User Removed!",
+                                iconURL: "https://cdn.discordapp.com/emojis/910049767910952961.png",
+                            })
+                            .setColor("#00ff9d")
+                            .setTimestamp()
+                            .setDescription(
+                                "Removed <@" + user.id + "> from your channel <#" + channel.id + ">. It now has " + newChanelData.MembersID.length + '/' + chnlData.num + 'members.'
+                            )
+                        ]
                     })
-                    message.channel.send(`Successfuly removed ${user.user} from the channel. There are now ${newChanelData.MembersID.length} members in the channel`);
+
                 } else if (args[0] == 'reset') {
-                    if (!channelData) return message.channel.send("No channel");
+                    if (!channelData) return message.reply(`${emotes.cross} You need to have a channel first to delete it.`);
                     const channel = await message.guild.channels.fetch(
                         channelData.ChannelID
                     );
                     args.shift();
-                    const msg = await message.channel.send(`${message.author}, are you sure you want to reset your channel?`);
+                    const msg = await message.reply(`${message.author}, are you sure you want to reset your channel?`);
                     await Promise.all([msg.react("✅"), msg.react("❌")]);
 
                     const filter = (reaction, user) => user.id === message.author.id && ["✅", "❌"].includes(reaction.emoji.name);
@@ -200,6 +236,7 @@ module.exports = {
                         filter: filter,
                         max: 1
                     });
+
                     if (response.size > 0) {
                         const reaction = response.first();
                         if (reaction.emoji.name === "✅") {
@@ -207,16 +244,25 @@ module.exports = {
                             await channelModel.deleteOne({
                                 ChannelID: channel.id
                             })
-                            return message.channel.send('Done deleted #' + channel.name)
+                            return message.reply('Done. Deleted #' + channel.name)
                         } else {
                             msg.edit("Cancelled reset.");
                         }
                     }
                 }
             } else {
-                message.channel.send(
-                    "Args are `create, add, rename, remove and reset`"
-                );
+                message.reply({
+                    embeds: [
+                        new Discord.MessageEmbed()
+                            .setColor(16724533)
+                            .setThumbnail('https://images-ext-2.discordapp.net/external/TLvA6RAOze3jWk_uDiSWQaZr6q7pNze0sCMmy4dImak/https/media.discordapp.net/attachments/909344848761466881/914774250219511848/1qrL0Pk2sWbLmTcHh5f4iMTW8478OwNG4P8BP9wIb9U4JZUAAAAASUVORK5CYII.png')
+                            .setAuthor({
+                                name: "Invalid arguments",
+                                iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
+                            })
+                            .setDescription('The command you input is incomplete, please provide a valid argument.\n\n>>> <:nx_tick:910049767910952961> n.channel `add`\n<:nx_tick:910049767910952961> n.channel `reset`\n<:nx_tick:910049767910952961> n.channel `create`\n<:nx_tick:910049767910952961> n.channel `remove`\n<:nx_tick:910049767910952961> n.channel `rename`')
+                    ]
+                })
             }
         }
     },
