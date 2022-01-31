@@ -1,31 +1,39 @@
 const Discord = require("discord.js");
-const { Permissions } = require("discord.js");
 const emotes = require("../../data/emotes.json")
-
+const {
+    Permissions
+} = require("discord.js");
 const chnlcreate = ['<@&782502710099836929>', '<@&745564909810614343>', '<@&772005497762218024>']
+/**
+ *@param {Client} client
+ *@param {Message} message
+ *@param {String[]} args
+ *@param {String} cmd
+ */
 module.exports = {
     name: "channel",
     aliases: ["chnl"],
-    async execute(message, args, cmd, client, d, profileData) {
-
+    async execute(message, args, cmd, client) {
         const chnlData = require("../../functions").CanGetChannelWithInfo(message.member);
 
         if (!chnlData.has) {
             return message.reply({
                 embeds: [
                     new Discord.MessageEmbed()
-                        .setColor(16724533)
-                        .setThumbnail('https://images-ext-2.discordapp.net/external/TLvA6RAOze3jWk_uDiSWQaZr6q7pNze0sCMmy4dImak/https/media.discordapp.net/attachments/909344848761466881/914774250219511848/1qrL0Pk2sWbLmTcHh5f4iMTW8478OwNG4P8BP9wIb9U4JZUAAAAASUVORK5CYII.png')
-                        .setAuthor({
-                            name: "Missing roles",
-                            iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
-                        })
-                        .setDescription(`Oops! You need any of the following roles to create a channel\n\n>>> <:nx_tick:910049767910952961> ${chnlcreate.join('\n<:nx_tick:910049767910952961> ')}`)
+                    .setColor(16724533)
+                    .setThumbnail('https://images-ext-2.discordapp.net/external/TLvA6RAOze3jWk_uDiSWQaZr6q7pNze0sCMmy4dImak/https/media.discordapp.net/attachments/909344848761466881/914774250219511848/1qrL0Pk2sWbLmTcHh5f4iMTW8478OwNG4P8BP9wIb9U4JZUAAAAASUVORK5CYII.png')
+                    .setAuthor({
+                        name: "Missing roles",
+                        iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
+                    })
+                    .setDescription(`Oops! You need any of the following roles to create a channel\n\n>>> <:nx_tick:910049767910952961> ${chnlcreate.join('\n<:nx_tick:910049767910952961> ')}`)
                 ]
             })
         } else {
             const channelModel = require("../../models/channelSchema");
-            const channelData = await channelModel.findOne({ OwnerID: message.author.id });
+            const channelData = await channelModel.findOne({
+                OwnerID: message.author.id
+            });
 
             if (["rename", "add", "reset", "remove", "create"].includes(args[0])) {
                 if (args[0] == "create") {
@@ -33,13 +41,13 @@ module.exports = {
                         return message.reply({
                             embeds: [
                                 new Discord.MessageEmbed()
-                                    .setColor(16724533)
-                                    //.setThumbnail('https://images-ext-2.discordapp.net/external/TLvA6RAOze3jWk_uDiSWQaZr6q7pNze0sCMmy4dImak/https/media.discordapp.net/attachments/909344848761466881/914774250219511848/1qrL0Pk2sWbLmTcHh5f4iMTW8478OwNG4P8BP9wIb9U4JZUAAAAASUVORK5CYII.png')
-                                    .setAuthor({
-                                        name: "Channel exists.",
-                                        iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
-                                    })
-                                    .setDescription(`Looks like you already have a channel.\n**Channel**: <#${channelData.ChannelID}>`)
+                                .setColor(16724533)
+                                //.setThumbnail('https://images-ext-2.discordapp.net/external/TLvA6RAOze3jWk_uDiSWQaZr6q7pNze0sCMmy4dImak/https/media.discordapp.net/attachments/909344848761466881/914774250219511848/1qrL0Pk2sWbLmTcHh5f4iMTW8478OwNG4P8BP9wIb9U4JZUAAAAASUVORK5CYII.png')
+                                .setAuthor({
+                                    name: "Channel exists.",
+                                    iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
+                                })
+                                .setDescription(`Looks like you already have a channel.\n**Channel**: <#${channelData.ChannelID}>`)
                             ]
                         })
                     }
@@ -48,32 +56,32 @@ module.exports = {
                     //entire else is creating a channel
                     const channel = await message.guild.channels.create(
                         `┃${args.join(" ")}`, {
-                        type: "GUILD_TEXT",
-                        reason: "Claimed private channel",
-                        permissionOverwrites: [{
-                            id: message.guild.id,
-                            deny: [Permissions.FLAGS.VIEW_CHANNEL],
-                        },
-                        {
-                            id: message.author.id,
-                            allow: [
-                                Permissions.FLAGS.VIEW_CHANNEL,
-                                Permissions.FLAGS.SEND_MESSAGES,
-                                Permissions.FLAGS.ADD_REACTIONS,
-                                Permissions.FLAGS.ATTACH_FILES,
-                                Permissions.FLAGS.USE_EXTERNAL_EMOJIS,
-                                Permissions.FLAGS.USE_EXTERNAL_STICKERS,
-                                Permissions.FLAGS.MANAGE_MESSAGES,
+                            type: "GUILD_TEXT",
+                            reason: "Claimed private channel",
+                            permissionOverwrites: [{
+                                    id: message.guild.id,
+                                    deny: [Permissions.FLAGS.VIEW_CHANNEL],
+                                },
+                                {
+                                    id: message.author.id,
+                                    allow: [
+                                        Permissions.FLAGS.VIEW_CHANNEL,
+                                        Permissions.FLAGS.SEND_MESSAGES,
+                                        Permissions.FLAGS.ADD_REACTIONS,
+                                        Permissions.FLAGS.ATTACH_FILES,
+                                        Permissions.FLAGS.USE_EXTERNAL_EMOJIS,
+                                        Permissions.FLAGS.USE_EXTERNAL_STICKERS,
+                                        Permissions.FLAGS.MANAGE_MESSAGES,
+                                    ],
+                                }, {
+                                    id: '789886892807946240',
+                                    allow: [
+                                        Permissions.FLAGS.VIEW_CHANNEL,
+                                        Permissions.FLAGS.SEND_MESSAGES
+                                    ]
+                                }
                             ],
-                        }, {
-                            id: '789886892807946240',
-                            allow: [
-                                Permissions.FLAGS.VIEW_CHANNEL,
-                                Permissions.FLAGS.SEND_MESSAGES
-                            ]
                         }
-                        ],
-                    }
                     );
                     channel.setParent("936222310262792192", {
                         lockPermissions: false,
@@ -173,7 +181,7 @@ module.exports = {
                             .setColor("#00ff9d")
                             .setTimestamp()
                             .setDescription(
-                                "Added <@" + user.id + "> to your channel <#" + channel.id + ">. It now has " + newChanelData.MembersID.length + '/' + chnlData.num + 'members.'
+                                "Added <@" + user.id + "> to your channel <#" + channel.id + ">. It now has `" + newChanelData.MembersID.length + '`/`' + chnlData.num + '` members.'
                             )
                         ]
                     })
@@ -199,11 +207,15 @@ module.exports = {
                     if (!channelData.MembersID.includes(user.id)) {
                         return message.reply(`${emotes.cross} That user is not in your channel.`)
                     }
-                    const newChanelData = await channelModel.findOneAndUpdate(
-                        { ChannelID: channel.id },
-                        { $pull: { MembersID: user.id } },
-                        { new: true }
-                    )
+                    const newChanelData = await channelModel.findOneAndUpdate({
+                        ChannelID: channel.id
+                    }, {
+                        $pull: {
+                            MembersID: user.id
+                        }
+                    }, {
+                        new: true
+                    })
                     message.reply({
                         embeds: [new Discord.MessageEmbed()
                             .setFooter({
@@ -216,7 +228,7 @@ module.exports = {
                             .setColor("#00ff9d")
                             .setTimestamp()
                             .setDescription(
-                                "Removed <@" + user.id + "> from your channel <#" + channel.id + ">. It now has " + newChanelData.MembersID.length + '/' + chnlData.num + 'members.'
+                                "Removed <@" + user.id + "> from your channel <#" + channel.id + ">. It now has `" + newChanelData.MembersID.length + '`/`' + chnlData.num + '` members.'
                             )
                         ]
                     })
@@ -227,40 +239,81 @@ module.exports = {
                         channelData.ChannelID
                     );
                     args.shift();
-                    const msg = await message.reply(`${message.author}, are you sure you want to reset your channel?`);
-                    await Promise.all([msg.react("✅"), msg.react("❌")]);
-
-                    const filter = (reaction, user) => user.id === message.author.id && ["✅", "❌"].includes(reaction.emoji.name);
-
-                    const response = await msg.awaitReactions({
-                        filter: filter,
-                        max: 1
+                    let row = [{
+                        type: 1,
+                        components: [{
+                                type: 2,
+                                style: 'PRIMARY',
+                                custom_id: "Y",
+                                label: "Yes",
+                            },
+                            {
+                                type: 2,
+                                style: 'DANGER',
+                                custom_id: "N",
+                                label: "No",
+                            },
+                        ],
+                    }, ];
+                    
+                  
+                    const msg = await message.reply({
+                        content: `${message.author}, are you sure you want to reset your channel?`,
+                        components: row
+                    });
+                    const collector = msg.createMessageComponentCollector({
+                        componentType: 'BUTTON',
+                        time: 15000,
                     });
 
-                    if (response.size > 0) {
-                        const reaction = response.first();
-                        if (reaction.emoji.name === "✅") {
-                            channel.delete()
-                            await channelModel.deleteOne({
-                                ChannelID: channel.id
-                            })
-                            return message.reply('Done. Deleted #' + channel.name)
+                    collector.on('collect', async (i) => {
+                        if (i.user.id === message.author.id) {
+                            if (i.customId == 'Y') {
+                                channel.delete()
+                                await channelModel.deleteOne({
+                                    ChannelID: channel.id
+                                })
+                                collector.stop('e')
+                                return i.reply('Done. Deleted #' + channel.name)
+                            } else {
+                                collector.stop('e')
+                                return i.reply(`Cancelled deletion`)
+                            }
                         } else {
-                            msg.edit("Cancelled reset.");
+                            i.reply({
+                                content: `These buttons aren't for you!`,
+                                ephemeral: true
+                            });
                         }
-                    }
+                    });
+
+                    collector.on('end', (collected, reason) => {
+                      
+                            msg.edit({
+                                content: `${message.author}, are you sure you want to reset your channel?`,
+                                components:row.map(e => {
+                                    e.components = e.components.map(i => {
+                                        i.disabled = true
+                                        return i
+                                    })
+                                    return e
+                                })
+                            })
+                        
+                    })
+
                 }
             } else {
                 message.reply({
                     embeds: [
                         new Discord.MessageEmbed()
-                            .setColor(16724533)
-                            .setThumbnail('https://images-ext-2.discordapp.net/external/TLvA6RAOze3jWk_uDiSWQaZr6q7pNze0sCMmy4dImak/https/media.discordapp.net/attachments/909344848761466881/914774250219511848/1qrL0Pk2sWbLmTcHh5f4iMTW8478OwNG4P8BP9wIb9U4JZUAAAAASUVORK5CYII.png')
-                            .setAuthor({
-                                name: "Invalid arguments",
-                                iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
-                            })
-                            .setDescription('The command you input is incomplete, please provide a valid argument.\n\n>>> <:nx_tick:910049767910952961> n.channel `add`\n<:nx_tick:910049767910952961> n.channel `reset`\n<:nx_tick:910049767910952961> n.channel `create`\n<:nx_tick:910049767910952961> n.channel `remove`\n<:nx_tick:910049767910952961> n.channel `rename`')
+                        .setColor(16724533)
+                        .setThumbnail('https://images-ext-2.discordapp.net/external/TLvA6RAOze3jWk_uDiSWQaZr6q7pNze0sCMmy4dImak/https/media.discordapp.net/attachments/909344848761466881/914774250219511848/1qrL0Pk2sWbLmTcHh5f4iMTW8478OwNG4P8BP9wIb9U4JZUAAAAASUVORK5CYII.png')
+                        .setAuthor({
+                            name: "Invalid arguments",
+                            iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
+                        })
+                        .setDescription('The command you input is incomplete, please provide a valid argument.\n\n>>> <:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `add`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `reset`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `create`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `remove`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `rename`')
                     ]
                 })
             }
