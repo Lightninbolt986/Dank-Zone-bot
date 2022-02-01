@@ -21,13 +21,13 @@ module.exports = {
             return message.reply({
                 embeds: [
                     new Discord.MessageEmbed()
-                    .setColor(16724533)
-                    .setThumbnail('https://images-ext-2.discordapp.net/external/TLvA6RAOze3jWk_uDiSWQaZr6q7pNze0sCMmy4dImak/https/media.discordapp.net/attachments/909344848761466881/914774250219511848/1qrL0Pk2sWbLmTcHh5f4iMTW8478OwNG4P8BP9wIb9U4JZUAAAAASUVORK5CYII.png')
-                    .setAuthor({
-                        name: "Missing roles",
-                        iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
-                    })
-                    .setDescription(`Oops! You need any of the following roles to create a channel\n\n>>> <:nx_tick:910049767910952961> ${chnlcreate.join('\n<:nx_tick:910049767910952961> ')}`)
+                        .setColor(16724533)
+                        .setThumbnail('https://images-ext-2.discordapp.net/external/TLvA6RAOze3jWk_uDiSWQaZr6q7pNze0sCMmy4dImak/https/media.discordapp.net/attachments/909344848761466881/914774250219511848/1qrL0Pk2sWbLmTcHh5f4iMTW8478OwNG4P8BP9wIb9U4JZUAAAAASUVORK5CYII.png')
+                        .setAuthor({
+                            name: "Missing roles",
+                            iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
+                        })
+                        .setDescription(`Oops! You need any of the following roles to create a channel\n\n>>> <:nx_tick:910049767910952961> ${chnlcreate.join('\n<:nx_tick:910049767910952961> ')}`)
                 ]
             })
         } else {
@@ -42,13 +42,13 @@ module.exports = {
                         return message.reply({
                             embeds: [
                                 new Discord.MessageEmbed()
-                                .setColor(16724533)
-                                //.setThumbnail('https://images-ext-2.discordapp.net/external/TLvA6RAOze3jWk_uDiSWQaZr6q7pNze0sCMmy4dImak/https/media.discordapp.net/attachments/909344848761466881/914774250219511848/1qrL0Pk2sWbLmTcHh5f4iMTW8478OwNG4P8BP9wIb9U4JZUAAAAASUVORK5CYII.png')
-                                .setAuthor({
-                                    name: "Channel exists.",
-                                    iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
-                                })
-                                .setDescription(`Looks like you already have a channel.\n**Channel**: <#${channelData.ChannelID}>`)
+                                    .setColor(16724533)
+                                    //.setThumbnail('https://images-ext-2.discordapp.net/external/TLvA6RAOze3jWk_uDiSWQaZr6q7pNze0sCMmy4dImak/https/media.discordapp.net/attachments/909344848761466881/914774250219511848/1qrL0Pk2sWbLmTcHh5f4iMTW8478OwNG4P8BP9wIb9U4JZUAAAAASUVORK5CYII.png')
+                                    .setAuthor({
+                                        name: "Channel exists.",
+                                        iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
+                                    })
+                                    .setDescription(`Looks like you already have a channel.\n**Channel**: <#${channelData.ChannelID}>`)
                             ]
                         })
                     }
@@ -57,32 +57,32 @@ module.exports = {
                     //entire else is creating a channel
                     const channel = await message.guild.channels.create(
                         `┃${args.join(" ")}`, {
-                            type: "GUILD_TEXT",
-                            reason: "Claimed private channel",
-                            permissionOverwrites: [{
-                                    id: message.guild.id,
-                                    deny: [Permissions.FLAGS.VIEW_CHANNEL],
-                                },
-                                {
-                                    id: message.author.id,
-                                    allow: [
-                                        Permissions.FLAGS.VIEW_CHANNEL,
-                                        Permissions.FLAGS.SEND_MESSAGES,
-                                        Permissions.FLAGS.ADD_REACTIONS,
-                                        Permissions.FLAGS.ATTACH_FILES,
-                                        Permissions.FLAGS.USE_EXTERNAL_EMOJIS,
-                                        Permissions.FLAGS.USE_EXTERNAL_STICKERS,
-                                        Permissions.FLAGS.MANAGE_MESSAGES,
-                                    ],
-                                }, {
-                                    id: '789886892807946240',
-                                    allow: [
-                                        Permissions.FLAGS.VIEW_CHANNEL,
-                                        Permissions.FLAGS.SEND_MESSAGES
-                                    ]
-                                }
+                        type: "GUILD_TEXT",
+                        reason: "Claimed private channel",
+                        permissionOverwrites: [{
+                            id: message.guild.id,
+                            deny: [Permissions.FLAGS.VIEW_CHANNEL],
+                        },
+                        {
+                            id: message.author.id,
+                            allow: [
+                                Permissions.FLAGS.VIEW_CHANNEL,
+                                Permissions.FLAGS.SEND_MESSAGES,
+                                Permissions.FLAGS.ADD_REACTIONS,
+                                Permissions.FLAGS.ATTACH_FILES,
+                                Permissions.FLAGS.USE_EXTERNAL_EMOJIS,
+                                Permissions.FLAGS.USE_EXTERNAL_STICKERS,
+                                Permissions.FLAGS.MANAGE_MESSAGES,
                             ],
+                        }, {
+                            id: '789886892807946240',
+                            allow: [
+                                Permissions.FLAGS.VIEW_CHANNEL,
+                                Permissions.FLAGS.SEND_MESSAGES
+                            ]
                         }
+                        ],
+                    }
                     );
                     channel.setParent("936222310262792192", {
                         lockPermissions: false,
@@ -243,19 +243,19 @@ module.exports = {
                     let row = [{
                         type: 1,
                         components: [{
-                                type: 2,
-                                style: 'PRIMARY',
-                                custom_id: "Y",
-                                label: "Yes",
-                            },
-                            {
-                                type: 2,
-                                style: 'DANGER',
-                                custom_id: "N",
-                                label: "No",
-                            },
+                            type: 2,
+                            style: 'PRIMARY',
+                            custom_id: "Y",
+                            label: "Yes",
+                        },
+                        {
+                            type: 2,
+                            style: 'DANGER',
+                            custom_id: "N",
+                            label: "No",
+                        },
                         ],
-                    }, ];
+                    },];
 
 
                     const msg = await message.reply({
@@ -304,17 +304,25 @@ module.exports = {
                     })
 
                 } else if (args[0] == 'info') {
+
                     if (!channelData) return message.reply(`${emotes.cross} You need to have a channel first to view info about it.`);
                     const channel = await message.guild.channels.fetch(
                         channelData.ChannelID
                     );
-                    const string = `Channel - <#${channel.id}>\nMembers - ${channelData.MembersID.length}\nMax members - ${chnlData.num}\nCreated at <t:${(channel.createdAt.getTime()/1000).toFixed()}:f>\nMembers: ${channelData.MembersID.length?channelData.MembersID.map(e=>{
-                        return `<@${e}>`
-                    }).join(', ') : 'None'}\nBar(put corect location) - ${bar(100*(channelData.MembersID.length/chnlData.num))}`
-                    message.channel.send({
-                        content: string,
+                    message.reply({
+                        embeds: [
+                            new Discord.MessageEmbed()
+                                .setColor("BLURPLE")
+                                .setAuthor({
+                                    name: message.member.user.username + "'s channel info",
+                                    iconURL: message.member.user.displayAvatarURL({ dynamic: true })
+                                })
+                                .setDescription(`${emotes.dot} Channel: <#${channel.id}>\n${emotes.dot} Created at: <t:${(channel.createdAt.getTime() / 1000).toFixed()}:f>\n${emotes.dot} Members: ${channelData.MembersID.length ? channelData.MembersID.map(e => { return `<@${e}>` }).join(', ') : '\`Nobody yet\`'}`)
+                                .addField("Member Space", `${bar(100 * (channelData.MembersID.length / chnlData.num))} \`${channelData.MembersID.length} / ${chnlData.num}\``)
+                        ],
                         allowedMentions: {
-                            parse: []
+                            repliedUser: false,
+                            parse: ['users']
                         }
                     })
 
@@ -323,13 +331,13 @@ module.exports = {
                 message.reply({
                     embeds: [
                         new Discord.MessageEmbed()
-                        .setColor(16724533)
-                        .setThumbnail('https://images-ext-2.discordapp.net/external/TLvA6RAOze3jWk_uDiSWQaZr6q7pNze0sCMmy4dImak/https/media.discordapp.net/attachments/909344848761466881/914774250219511848/1qrL0Pk2sWbLmTcHh5f4iMTW8478OwNG4P8BP9wIb9U4JZUAAAAASUVORK5CYII.png')
-                        .setAuthor({
-                            name: "Invalid arguments",
-                            iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
-                        })
-                        .setDescription('The command you input is incomplete, please provide a valid argument.\n\n>>> <:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `add`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `reset`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `create`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `remove`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `rename`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `info`')
+                            .setColor(16724533)
+                            .setThumbnail('https://images-ext-2.discordapp.net/external/TLvA6RAOze3jWk_uDiSWQaZr6q7pNze0sCMmy4dImak/https/media.discordapp.net/attachments/909344848761466881/914774250219511848/1qrL0Pk2sWbLmTcHh5f4iMTW8478OwNG4P8BP9wIb9U4JZUAAAAASUVORK5CYII.png')
+                            .setAuthor({
+                                name: "Invalid arguments",
+                                iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
+                            })
+                            .setDescription('The command you input is incomplete, please provide a valid argument.\n\n>>> <:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `add`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `info`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `reset`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `create`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `remove`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `rename`')
                     ]
                 })
             }
