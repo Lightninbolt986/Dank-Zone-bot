@@ -181,9 +181,7 @@ module.exports = {
                             })
                             .setColor("#00ff9d")
                             .setTimestamp()
-                            .setDescription(
-                                "Added <@" + user.id + "> to your channel <#" + channel.id + ">. It now has \`" + newChanelData.MembersID.length + '\`/\`' + chnlData.num + '\` members.'
-                            )
+                            .setDescription(`Added <@${user.id}> to your channel <#${channel.id}>.\nIt now has \`${newChanelData.MembersID.length}/${chnlData.num}\` members.`)
                         ]
                     })
 
@@ -228,9 +226,7 @@ module.exports = {
                             })
                             .setColor("#00ff9d")
                             .setTimestamp()
-                            .setDescription(
-                                "Removed <@" + user.id + "> from your channel <#" + channel.id + ">. It now has \`" + newChanelData.MembersID.length + '\`/\`' + chnlData.num + '\` members.'
-                            )
+                            .setDescription(`Removed <@${user.id}> from your channel <#${channel.id}>.\nIt now has \`${newChanelData.MembersID.length}/${chnlData.num}\` members.`)
                         ]
                     })
 
@@ -275,14 +271,14 @@ module.exports = {
                                     ChannelID: channel.id
                                 })
                                 collector.stop('e')
-                                return i.reply('Done. Deleted #' + channel.name)
+                                return i.reply(`${emotes.tick} Deleted \`#${channel.name}\``)
                             } else {
                                 collector.stop('e')
-                                return i.reply(`Cancelled deletion`)
+                                return i.reply(`${emotes.cross} Cancelled deletion`)
                             }
                         } else {
                             i.reply({
-                                content: `These buttons aren't for you!`,
+                                content: `${emotes.cross} These buttons aren't for you!`,
                                 ephemeral: true
                             });
                         }
