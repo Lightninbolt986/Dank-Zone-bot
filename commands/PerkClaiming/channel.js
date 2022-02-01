@@ -10,6 +10,7 @@ const chnlcreate = ['<@&782502710099836929>', '<@&745564909810614343>', '<@&7720
  *@param {String[]} args
  *@param {String} cmd
  */
+const bar = require("../../functions").bar
 module.exports = {
     name: "channel",
     aliases: ["chnl"],
@@ -35,7 +36,7 @@ module.exports = {
                 OwnerID: message.author.id
             });
 
-            if (["rename", "add", "reset", "remove", "create"].includes(args[0])) {
+            if (["rename", "add", "reset", "remove", "create", "info"].includes(args[0])) {
                 if (args[0] == "create") {
                     if (channelData) {
                         return message.reply({
@@ -255,8 +256,8 @@ module.exports = {
                             },
                         ],
                     }, ];
-                    
-                  
+
+
                     const msg = await message.reply({
                         content: `${message.author}, are you sure you want to reset your channel?`,
                         components: row
@@ -288,18 +289,33 @@ module.exports = {
                     });
 
                     collector.on('end', (collected, reason) => {
-                      
-                            msg.edit({
-                                content: `${message.author}, are you sure you want to reset your channel?`,
-                                components:row.map(e => {
-                                    e.components = e.components.map(i => {
-                                        i.disabled = true
-                                        return i
-                                    })
-                                    return e
+
+                        msg.edit({
+                            content: `${message.author}, are you sure you want to reset your channel?`,
+                            components: row.map(e => {
+                                e.components = e.components.map(i => {
+                                    i.disabled = true
+                                    return i
                                 })
+                                return e
                             })
-                        
+                        })
+
+                    })
+
+                } else if (args[0] == 'info') {
+                    if (!channelData) return message.reply(`${emotes.cross} You need to have a channel first to view info about it.`);
+                    const channel = await message.guild.channels.fetch(
+                        channelData.ChannelID
+                    );
+                    const string = `Channel - <#${channel.id}>\nMembers - ${channelData.MembersID.length}\nMax members - ${chnlData.num}\nCreated at <t:${(channel.createdAt.getTime()/1000).toFixed()}:f>\nMembers: ${channelData.MembersID.length?channelData.MembersID.map(e=>{
+                        return `<@${e}>`
+                    }).join(', ') : 'None'}\nBar(put corect location) - ${bar(100*(channelData.MembersID.length/chnlData.num))}`
+                    message.channel.send({
+                        content: string,
+                        allowedMentions: {
+                            parse: []
+                        }
                     })
 
                 }
@@ -313,7 +329,7 @@ module.exports = {
                             name: "Invalid arguments",
                             iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
                         })
-                        .setDescription('The command you input is incomplete, please provide a valid argument.\n\n>>> <:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `add`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `reset`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `create`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `remove`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `rename`')
+                        .setDescription('The command you input is incomplete, please provide a valid argument.\n\n>>> <:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `add`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `reset`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `create`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `remove`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `rename`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `info`')
                     ]
                 })
             }
