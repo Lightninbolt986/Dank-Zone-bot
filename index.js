@@ -33,5 +33,6 @@ mongoose
 process.on('unhandledRejection', (err) => {
     console.log(err)
 })
-
+const Nuggies = require('nuggies')
+Nuggies.handleInteractions(client)
 client.login(token);
