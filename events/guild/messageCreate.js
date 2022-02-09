@@ -4,6 +4,7 @@ module.exports = async (d, client, message) => {
     const prefix = process.env.prefix
     if (message.author.bot) return
     const profileModel = require("../../models/profileSchema");
+    const ARModel = require(`../../models/ARSchema`)
     let profileData;
     try {
         profileData = await profileModel.findOne({
@@ -22,7 +23,7 @@ module.exports = async (d, client, message) => {
     }
     if (profileData.is_afk) {
         message.channel.send('Welcome back `' + message.author.username + '`! You are no longer afk.');
-        message.member.setNickname(`${message.member?.nickname?.replace('[AFK] ', '') || message.author.username}`).catch(() => {})
+        message.member.setNickname(`${message.member?.nickname?.replace('[AFK] ', '') || message.author.username}`).catch(() => { })
         profileData.is_afk = false;
         profileData.afkreason = null;
         let string = ''
@@ -45,10 +46,15 @@ module.exports = async (d, client, message) => {
     }
 
     message.mentions.users.forEach(async (u) => {
-        if (u.id === message.author.id) return
+        
+        
         const pingUser = await profileModel.findOne({
             userID: u.id
         })
+        const pingUserAR = await ARModel.findOne({
+            UserID: u.id
+        })
+        
         if (pingUser?.is_afk) {
             const e = await profileModel.findOneAndUpdate({
                 userID: u.id
@@ -77,16 +83,34 @@ module.exports = async (d, client, message) => {
                 .setColor("BLURPLE")
 
             message.reply({
-                    embeds: [afk],
-                    allowedMentions: {
-                        repliedUser: true
-                    }
-                })
+                embeds: [afk],
+                allowedMentions: {
+                    repliedUser: true
+                }
+            })
                 .then(m => {
                     setTimeout(() => {
                         m.delete()
                     }, 20000)
                 })
+        }
+        if (pingUserAR?.ARs?.length) {
+            pingUserAR.ARs.forEach(e => {
+                message.react(e).catch(async (err) => {
+                    if (err.toString().startsWith('DiscordAPIError: Unknown Emoji')) {
+                        await ARModel.findOneAndUpdate({
+                            UserID: u.id
+                        }, {
+                            $pull: {
+                                ARs: e
+                            }
+                        })
+                        message.channel.send(`I do not have access to the emoji ${e} anymore. It has been removed from your AR.`)
+                    } else {
+                        console.log(err)
+                    }
+                })
+            })
         }
     });
     if ((!message.content.startsWith(prefix) || message.author.bot)) return
