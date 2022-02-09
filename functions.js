@@ -119,6 +119,36 @@ module.exports = {
         last = text.lastIndexOf(" ");
         text = text.substring(0, last);
         return text + "...";
-    }
-
+    },
+    CanGetARWithInfo: function (member) {
+        let num = 0
+        //5$ investor
+        if (member.roles.cache.has('782502710099836929')) {
+            num++
+        }
+        //25$ investor
+        if (member.roles.cache.has('801348395036835880')) {
+            num++
+        }
+        //Single booster
+        if (member.roles.cache.has('768756245993619467')) {
+            num++
+        }
+        //500M Donator
+        if (member.roles.cache.has('772005497762218024')) {
+            num++
+        }
+        //750M Donator
+        if (member.roles.cache.has('798558270104010752')) {
+            num++
+        }
+        //2.5B Donator
+        if (member.roles.cache.has('815507562107633684')) {
+            num++
+        }
+        return {
+            has:Boolean(num),
+            num
+        }
+    },
 }

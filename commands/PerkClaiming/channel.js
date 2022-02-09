@@ -4,12 +4,6 @@ const {
     Permissions
 } = require("discord.js");
 const chnlcreate = ['<@&782502710099836929>', '<@&745564909810614343>', '<@&772005497762218024>']
-/**
- *@param {Client} client
- *@param {Message} message
- *@param {String[]} args
- *@param {String} cmd
- */
 const bar = require("../../functions").bar
 module.exports = {
     name: "channel",
