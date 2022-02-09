@@ -1,12 +1,16 @@
 const Discord = require("discord.js");
 const emotes = require("../../data/emotes.json")
-const chnlcreate = ['erer', 're', 'er', 'r', 're']
+const arcreate = ['<@&782502710099836929>', '<@&768756245993619467>', '<@&772005497762218024>']
+const bar = require("../../functions").bar
 module.exports = {
     name: "ar",
     aliases: ["autoreact"],
+
     async execute(message, args, cmd, client) {
+
         const chnlData = require("../../functions").CanGetARWithInfo(message.member);
         const isNumeric = require(`../../functions`).isNumeric
+
         if (!chnlData.has) {
             return message.reply({
                 embeds: [
@@ -17,7 +21,7 @@ module.exports = {
                             name: "Missing roles",
                             iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
                         })
-                        .setDescription(`Oops! You need any of the following roles to create a channel\n\n>>> <:nx_tick:910049767910952961> ${chnlcreate.join('\n<:nx_tick:910049767910952961> ')}`)
+                        .setDescription(`Oops! You need any of the following roles to add an autoreact\n\n>>> <:nx_tick:910049767910952961> ${arcreate.join('\n<:nx_tick:910049767910952961> ')}`)
                 ]
             })
         } else {
@@ -26,24 +30,24 @@ module.exports = {
                 UserID: message.author.id
             });
 
-            if (["add", "remove", "list"].includes(args[0])) {
-                if (args[0] == "add") {
+            if (["add", "remove", "list", "-", "+"].includes(args[0])) {
+                if (args[0] == "add" || args[0] == '+') {
                     args.shift()
 
-                    if (!args[0]) {
-                        return message.channel.send('gib emo')
-                    }
+                    if (!args[0]) { return message.reply(`${emotes.cross} Please enter a valid \`Emoji/EmojiID\``) }
+
                     let id = args[0].match(/:[0-9]+>/gi)
-                    if (id) id = id[0].substr(1).slice(0, -1);
-                    const emo = client.emojis.cache.get(id)
-                    if (!emo) return message.reply('I dont hab that emo')
+                    if (id) id = id[0].substr(1).slice(0, -1)
+
+                    const emo = client.emojis.cache.get(id) || client.emojis.cache.get(args[0])
+                    if (!emo) return message.reply(`${emotes.cross} Either that's not a valid emoji or **${client.user.username}** can't access it.`)
                     if (ARData) {
                         //already has a schema
                         if (ARData.ARs.length >= chnlData.num) {
-                            return message.channel.send('you have max ars - ' + chnlData.num)
+                            return message.reply(`${emotes.cross} You have attained max autoreacts - \`${chnlData.num}/${chnlData.num}\``)
                         }
                         if (ARData.ARs.includes(id)) {
-                            return message.reply('You already hab that emo')
+                            return message.reply(`${emotes.cross} You have already added that emoji as an autoreact.`)
                         }
                         const newARData = await ARSchema.findOneAndUpdate({
                             UserID: message.author.id
@@ -54,24 +58,50 @@ module.exports = {
                         }, {
                             new: true
                         })
-                        message.reply(`Added <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}>, you hab ${newARData.ARs.length} ars. You can add ${chnlData.num - newARData.ARs.length} more`)
+                        message.reply({
+                            embeds: [new Discord.MessageEmbed()
+                                .setFooter({
+                                    text: message.author.tag,
+                                })
+                                .setAuthor({
+                                    name: "Autoreact Added!",
+                                    iconURL: "https://cdn.discordapp.com/emojis/910049767910952961.png",
+                                })
+                                .setColor("#00ff9d")
+                                .setTimestamp()
+                                .setDescription(`Successfully added <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}> to your autoreacts.\nYou now have \`${newARData.ARs.length}/${chnlData.num}\` ar(s).`)
+                            ]
+                        })
                     } else {
                         const i = await ARSchema.create({
                             UserID: message.author.id,
                             ARs: [emo.id],
                         });
                         i.save();
-                        message.reply(`Added <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}>, you hab ${i.ARs.length} ars. You can add ${chnlData.num - i.ARs.length} more`)
+                        message.reply({
+                            embeds: [new Discord.MessageEmbed()
+                                .setFooter({
+                                    text: message.author.tag,
+                                })
+                                .setAuthor({
+                                    name: "Autoreact Added!",
+                                    iconURL: "https://cdn.discordapp.com/emojis/910049767910952961.png",
+                                })
+                                .setColor("#00ff9d")
+                                .setTimestamp()
+                                .setDescription(`Successfully added <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}> to your autoreacts.\nYou now have \`${i.ARs.length}/${chnlData.num}\` ar(s).`)
+                            ]
+                        })
                     }
-                } else if (args[0] == "remove") {
+                } else if (args[0] == "remove" || args[0] == '-') {
                     if (!ARData?.ARs?.length) {
-                        return message.reply('You have no ars')
+                        return message.reply(`${emotes.cross} You don't have any ar(s) to remove.`)
                     }
                     args.shift()
                     if (isNumeric(args[0])) {
                         //gave number
                         const e = ARData.ARs[args[0] - 1]
-                        if (!e) return message.channel.send('The is no AR at that index')
+                        if (!e) return message.reply(`${emotes.cross} There is no autoreact with that index.`)
                         const emo = client.emojis.cache.get(e)
                         const newARData = await ARSchema.findOneAndUpdate({
                             UserID: message.author.id
@@ -82,19 +112,32 @@ module.exports = {
                         }, {
                             new: true
                         })
-                        message.reply(`Removed <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}>, you hab ${newARData.ARs.length} ars. You can add ${chnlData.num - newARData.ARs.length} more`)
+                        message.reply({
+                            embeds: [new Discord.MessageEmbed()
+                                .setFooter({
+                                    text: message.author.tag,
+                                })
+                                .setAuthor({
+                                    name: "Autoreact Removed!",
+                                    iconURL: "https://cdn.discordapp.com/emojis/910049767910952961.png",
+                                })
+                                .setColor("#00ff9d")
+                                .setTimestamp()
+                                .setDescription(`Successfully removed <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}> from your autoreacts.\nYou now have \`${newARData.ARs.length}/${chnlData.num}\` ar(s).`)
+                            ]
+                        })
 
                     } else {
                         //gave emo
                         if (!args[0]) {
-                            return message.channel.send('gib emo or number of emo to remove')
+                            return message.reply(`Please provide an emoji or emoji index \`(${process.env.prefix}ar list)\` to remove`)
                         }
                         let id = args[0].match(/:[0-9]+>/gi)
                         if (id) id = id[0].substr(1).slice(0, -1);
-                        const emo = client.emojis.cache.get(id)
-                        if (!emo) return message.reply('I dont hab that emo')
+                        const emo = client.emojis.cache.get(id) || client.emojis.cache.get(args[0])
+                        if (!emo) return message.reply(`${emotes.cross} Either that's not a valid emoji or **${client.user.username}** can't access it.`)
                         if (!ARData.ARs.includes(id)) {
-                            return message.reply('You dont hab that emo')
+                            return message.reply(`${emotes.cross} You don't have that emoji as an autoreact`)
                         }
                         const newARData = await ARSchema.findOneAndUpdate({
                             UserID: message.author.id
@@ -105,23 +148,54 @@ module.exports = {
                         }, {
                             new: true
                         })
-                        message.reply(`Removed <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}>, you hab ${newARData.ARs.length} ars. You can add ${chnlData.num - newARData.ARs.length} more`)
-
+                        message.reply({
+                            embeds: [new Discord.MessageEmbed()
+                                .setFooter({
+                                    text: message.author.tag,
+                                })
+                                .setAuthor({
+                                    name: "Autoreact Removed!",
+                                    iconURL: "https://cdn.discordapp.com/emojis/910049767910952961.png",
+                                })
+                                .setColor("#00ff9d")
+                                .setTimestamp()
+                                .setDescription(`Successfully removed <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}> from your autoreacts.\nYou now have \`${newARData.ARs.length}/${chnlData.num}\` ar(s).`)
+                            ]
+                        })
                     }
                 } else if (args[0] == 'list') {
                     if (!ARData?.ARs?.length) {
-                        return message.reply('You have no ars')
+                        return message.reply(`${emotes.cross} You don't have any autoreacts to list.`)
                     }
-                    return message.channel.send(`${ARData.ARs.map((e, i) => {
-                        const emo = client.emojis.cache.get(e)
-                        return `${i + 1}) <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}>`
-                    }).join('\n')}`)
+
+                    message.reply({
+                        embeds: [
+                            new Discord.MessageEmbed()
+                                .setColor("BLURPLE")
+                                .setAuthor({
+                                    name: message.member.user.username + "'s auto react(s)",
+                                    iconURL: message.member.user.displayAvatarURL({ dynamic: true })
+                                })
+                                .setDescription(`${ARData.ARs.map((e, i) => {
+                                    const emo = client.emojis.cache.get(e)
+                                    return `\` ${i + 1} \` <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}> — \`${emo.id}\``
+                                }).join('\n')}`)
+                                .addField("Autoreacts attained", `${bar(100 * (ARData.ARs.length / chnlData.num))} \`${ARData.ARs.length} / ${chnlData.num}\``)
+                        ]
+                    })
                 }
             } else {
                 message.reply({
                     embeds: [
                         new Discord.MessageEmbed()
-                            .setDescription('Use correct args nubw')]
+                            .setColor(16724533)
+                            .setThumbnail('https://images-ext-2.discordapp.net/external/TLvA6RAOze3jWk_uDiSWQaZr6q7pNze0sCMmy4dImak/https/media.discordapp.net/attachments/909344848761466881/914774250219511848/1qrL0Pk2sWbLmTcHh5f4iMTW8478OwNG4P8BP9wIb9U4JZUAAAAASUVORK5CYII.png')
+                            .setAuthor({
+                                name: "Invalid arguments",
+                                iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
+                            })
+                            .setDescription('The command you input is incomplete, please provide a valid argument.\n\n>>> <:nx_tick:910049767910952961> ' + process.env.prefix + 'autoreact `list`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'autoreact `add / +`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'autoreact `remove / -`')
+                    ]
                 })
             }
         }
