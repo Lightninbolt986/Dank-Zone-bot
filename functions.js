@@ -151,4 +151,7 @@ module.exports = {
             num
         }
     },
+    isNumeric: function (value) {
+        return /^-?\d+$/.test(value);
+    }
 }
