@@ -33,7 +33,8 @@ module.exports = {
                     if (!args[0]) {
                         return message.channel.send('gib emo')
                     }
-                    let id = args[0].match(/:[0-9]+>/gi)[0].substr(1).slice(0, -1);
+                    let id = args[0].match(/:[0-9]+>/gi)
+                    if (id) id = id[0].substr(1).slice(0, -1);
                     const emo = client.emojis.cache.get(id)
                     if (!emo) return message.reply('I dont hab that emo')
                     if (ARData) {
@@ -88,7 +89,8 @@ module.exports = {
                         if (!args[0]) {
                             return message.channel.send('gib emo or number of emo to remove')
                         }
-                        let id = args[0].match(/:[0-9]+>/gi)[0].substr(1).slice(0, -1);
+                        let id = args[0].match(/:[0-9]+>/gi)
+                        if (id) id = id[0].substr(1).slice(0, -1);
                         const emo = client.emojis.cache.get(id)
                         if (!emo) return message.reply('I dont hab that emo')
                         if (!ARData.ARs.includes(id)) {
@@ -119,7 +121,7 @@ module.exports = {
                 message.reply({
                     embeds: [
                         new Discord.MessageEmbed()
-                            .setDescription('Use correct args nubw')  ]
+                            .setDescription('Use correct args nubw')]
                 })
             }
         }
