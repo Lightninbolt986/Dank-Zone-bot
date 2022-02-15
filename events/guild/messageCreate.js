@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
-const textSmall = require('../../functions').TextSmall
+const { TextSmall, paginate } = require('../../functions')
+
 module.exports = async (d, client, message) => {
     const prefix = process.env.prefix
     if (message.author.bot) return
@@ -26,35 +27,37 @@ module.exports = async (d, client, message) => {
         message.member.setNickname(`${message.member?.nickname?.replace('[AFK] ', '') || message.author.username}`).catch(() => { })
         profileData.is_afk = false;
         profileData.afkreason = null;
-        let string = ''
-        let maxed = false
-        profileData.afkPings.map((i, ind, arr) => {
-            if (string.length < 3700) string = string + `<:bp_dot:918074237992988722> <@${i.pinger}> - <t:${i.time}:R> [Jump to message](${i.url})\n**Message Content**: *${i.content}*\n━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\n`
-            else if (maxed == false) {
-                maxed = true;
-                if (!(arr.length - (ind + 1) == 0)) {
-                    string = string + `+${(arr.length - (ind + 1))} more`
-                }
-            }
+        const ping = profileData.afkPings.map(i => {
+            return `<:bp_dot:918074237992988722> <@${i.pinger}> - <t:${i.time}:R> [Jump to message](${i.url})\n**Message Content**: *${i.content}*\n━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\━\n`
         })
-        if (string) message.reply({
-            embeds: [new Discord.MessageEmbed().setDescription(textSmall(string, 4000)).setTitle('Pings received while AFK').setColor("BLURPLE")]
-        })
-
+        const embed = {}
+        let embedslist = []
+        var i, j, temporary, chunk = 5;
+        for (i = 0, j = ping.length; i < j; i += chunk) {
+            temporary = ping.slice(i, i + chunk);
+            embed[`${i / chunk}`] = new Discord.MessageEmbed()
+                .setDescription(`${temporary.join(``)}`)
+                .setColor('BLURPLE')
+        }
+        for (let i = 0; i < (Object.keys(embed).length); i++) {
+            embedslist.push(embed[i])
+        }
         profileData.afkPings = []
         await profileData.save()
+        if (embedslist.length > 1) paginate(embedslist, message)
+        else if (embedslist.length) message.channel.send({ embeds: embedslist })
     }
 
     message.mentions.users.forEach(async (u) => {
-        
-        
+        if (message.author.id == u.id) return
+
         const pingUser = await profileModel.findOne({
             userID: u.id
         })
         const pingUserAR = await ARModel.findOne({
             UserID: u.id
         })
-        
+
         if (pingUser?.is_afk) {
             const e = await profileModel.findOneAndUpdate({
                 userID: u.id
@@ -64,7 +67,7 @@ module.exports = async (d, client, message) => {
                         pinger: message.author.id,
                         url: message.url,
                         channel: message.channel.id,
-                        content: textSmall(message.content, 100),
+                        content: TextSmall(message.content, 100),
                         time: (Date.now() / 1000).toFixed(0)
                     }
                 }

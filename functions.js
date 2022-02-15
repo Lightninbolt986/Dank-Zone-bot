@@ -102,6 +102,11 @@ module.exports = {
             has = true
             num = num + 5
         }
+        //Mythic [ IV ]
+        if (member.roles.cache.has('930494844160323605')) {
+            has = true
+            num = num + 5
+        }
 
         return {
             has,
@@ -147,11 +152,209 @@ module.exports = {
             num++
         }
         return {
-            has:Boolean(num),
+            has: Boolean(num),
             num
         }
     },
     isNumeric: function (value) {
         return /^-?\d+$/.test(value);
+    },
+    CanGetRoleWithInfo: function (member) {
+        let num = 0
+        //50$ investor
+        if (member.roles.cache.has('837266511210348544')) {
+            num = num+10
+        }
+        //1B donator
+        if (member.roles.cache.has('772005505278935050')) {
+            num = num + 10
+        }
+        //No lifer [ V ]
+        if (member.roles.cache.has('930494844160323605')) {
+            num = num + 10
+        }
+
+        return {
+            has: Boolean(num),
+            num
+        }
+    },
+    paginate: async function (embeds, message) {
+        const Discord = require('discord.js')
+        let first = new Discord.MessageButton()
+            .setEmoji('<:first2:926539374546542622>')
+            .setStyle('SECONDARY')
+            .setCustomId(`first`)
+
+        let previous = new Discord.MessageButton()
+            .setEmoji('<:back2:926539569623613472>')
+            .setStyle('SECONDARY')
+            .setCustomId(`previous`)
+
+        let next = new Discord.MessageButton()
+            .setEmoji(`<:next2:926539617350611005>`)
+            .setStyle('SECONDARY')
+            .setCustomId(`next`)
+
+        let last = new Discord.MessageButton()
+            .setEmoji(`<:last2:926539452371857438>`)
+            .setStyle('SECONDARY')
+            .setCustomId(`last`)
+
+        let dfirst = new Discord.MessageButton()
+            .setEmoji('<:first2:926539374546542622>')
+            .setStyle('SECONDARY')
+            .setCustomId(`dfirst`)
+            .setDisabled(true)
+
+        let dprevious = new Discord.MessageButton()
+            .setEmoji('<:back2:926539569623613472>')
+            .setStyle('SECONDARY')
+            .setCustomId(`dprevious`)
+            .setDisabled(true)
+
+        let dnext = new Discord.MessageButton()
+            .setEmoji(`<:next2:926539617350611005>`)
+            .setStyle('SECONDARY')
+            .setCustomId(`dnext`)
+            .setDisabled(true)
+
+        let dlast = new Discord.MessageButton()
+            .setEmoji(`<:last2:926539452371857438>`)
+            .setStyle('SECONDARY')
+            .setCustomId(`dlast`)
+            .setDisabled(true)
+
+
+        let currentPage = 1
+
+        let page = new Discord.MessageButton()
+            .setStyle('SECONDARY')
+            .setCustomId(`page`)
+            .setLabel(`${currentPage}/${embeds.length}`)
+            .setDisabled(true)
+        let butts = [dfirst, dprevious, page, next, last]
+        const m = await message.reply({
+            embeds: [embeds[0]],
+            components: [new Discord.MessageActionRow().addComponents(butts)]
+        })
+        const filter = (b) => {
+            if (b.user.id === message.author.id) return true;
+            return b.reply({
+                content: "<:nx_cross:914921124670890064> These are not for you.",
+                ephemeral: true
+            })
+        };
+        const collector = await m.createMessageComponentCollector({
+            filter: filter,
+            time: 300000
+        });
+
+
+        collector.on("collect", async (i) => {
+            i.deferUpdate()
+            if (i.customId === "first") {
+                currentPage = 1
+
+                let page = new Discord.MessageButton()
+                    .setStyle('SECONDARY')
+                    .setCustomId(`page`)
+                    .setLabel(`${currentPage}/${embeds.length}`)
+                    .setDisabled(true)
+
+                const buttons = [dfirst, dprevious, page, next, last]
+                const components = new Discord.MessageActionRow().addComponents(buttons)
+
+                m.edit({
+                    embeds: [embeds[currentPage - 1]],
+                    components: [components],
+                }).catch(() => {})
+            }
+
+            if (i.customId === "previous") {
+                currentPage--
+
+                let page = new Discord.MessageButton()
+                    .setStyle('SECONDARY')
+                    .setCustomId(`page`)
+                    .setLabel(`${currentPage}/${embeds.length}`)
+                    .setDisabled(true)
+
+                const dbuttons = [dfirst, dprevious, page, next, last]
+                const dcomponents = new Discord.MessageActionRow().addComponents(dbuttons)
+                const buttons = [first, previous, page, next, last]
+                const components = new Discord.MessageActionRow().addComponents(buttons)
+
+                m.edit({
+                    embeds: [embeds[currentPage - 1]],
+                    components: currentPage > 1 ? [components] : [dcomponents],
+                }).catch(() => {})
+            }
+
+            if (i.customId === "next") {
+                currentPage++
+
+                let page = new Discord.MessageButton()
+                    .setStyle('SECONDARY')
+                    .setCustomId(`page`)
+                    .setLabel(`${currentPage}/${embeds.length}`)
+                    .setDisabled(true)
+
+                const dbuttons = [first, previous, page, dnext, dlast]
+                const dcomponents = new Discord.MessageActionRow().addComponents(dbuttons)
+                const buttons = [first, previous, page, next, last]
+                const components = new Discord.MessageActionRow().addComponents(buttons)
+
+                m.edit({
+                    embeds: [embeds[currentPage - 1]],
+                    components: currentPage < embeds.length ? [components] : [dcomponents],
+                }).catch(() => {})
+            }
+
+            if (i.customId === "last") {
+                currentPage = embeds.length
+
+                let page = new Discord.MessageButton()
+                    .setStyle('SECONDARY')
+                    .setCustomId(`page`)
+                    .setLabel(`${currentPage}/${embeds.length}`)
+                    .setDisabled(true)
+
+                const buttons = [first, previous, page, dnext, dlast]
+                const components = new Discord.MessageActionRow().addComponents(buttons)
+
+                m.edit({
+                    embeds: [embeds[currentPage - 1]],
+                    components: [components],
+                }).catch(() => {})
+            }
+        });
+
+        collector.on('end', (mes, r) => {
+            if (r == 'time') {
+                let lpage = new Discord.MessageButton()
+                    .setStyle('SECONDARY')
+                    .setCustomId(`page`)
+                    .setLabel(`${currentPage}/${embeds.length}`)
+                    .setDisabled(true)
+
+                const dbutts = [dfirst, dprevious, lpage, dnext, dlast]
+                m.edit({
+                    embeds: [embeds[currentPage - 1]],
+                    components: [new Discord.MessageActionRow().addComponents(dbutts)]
+                })
+            }
+        })
+    },
+    isColor: function (color) {
+        if (!color) return undefined
+        if (color.includes("#")) {
+            color = color.split("#")[1]
+        }
+        return typeof color === 'string' &&
+            color.length === 6 &&
+            !isNaN(Number('0x' + color))
+
     }
+
 }

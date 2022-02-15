@@ -8,10 +8,10 @@ module.exports = {
 
     async execute(message, args, cmd, client) {
 
-        const chnlData = require("../../functions").CanGetARWithInfo(message.member);
+        const arData = require("../../functions").CanGetARWithInfo(message.member);
         const isNumeric = require(`../../functions`).isNumeric
 
-        if (!chnlData.has) {
+        if (!arData.has) {
             return message.reply({
                 embeds: [
                     new Discord.MessageEmbed()
@@ -43,8 +43,8 @@ module.exports = {
                     if (!emo) return message.reply(`${emotes.cross} Either that's not a valid emoji or **${client.user.username}** can't access it.`)
                     if (ARData) {
                         //already has a schema
-                        if (ARData.ARs.length >= chnlData.num) {
-                            return message.reply(`${emotes.cross} You have attained max autoreacts - \`${chnlData.num}/${chnlData.num}\``)
+                        if (ARData.ARs.length >= arData.num) {
+                            return message.reply(`${emotes.cross} You have attained max autoreacts - \`${arData.num}/${arData.num}\``)
                         }
                         if (ARData.ARs.includes(id)) {
                             return message.reply(`${emotes.cross} You have already added that emoji as an autoreact.`)
@@ -69,7 +69,7 @@ module.exports = {
                                 })
                                 .setColor("#00ff9d")
                                 .setTimestamp()
-                                .setDescription(`Successfully added <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}> to your autoreacts.\nYou now have \`${newARData.ARs.length}/${chnlData.num}\` ar(s).`)
+                                .setDescription(`Successfully added <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}> to your autoreacts.\nYou now have \`${newARData.ARs.length}/${arData.num}\` ar(s).`)
                             ]
                         })
                     } else {
@@ -89,7 +89,7 @@ module.exports = {
                                 })
                                 .setColor("#00ff9d")
                                 .setTimestamp()
-                                .setDescription(`Successfully added <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}> to your autoreacts.\nYou now have \`${i.ARs.length}/${chnlData.num}\` ar(s).`)
+                                .setDescription(`Successfully added <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}> to your autoreacts.\nYou now have \`${i.ARs.length}/${arData.num}\` ar(s).`)
                             ]
                         })
                     }
@@ -123,7 +123,7 @@ module.exports = {
                                 })
                                 .setColor("#00ff9d")
                                 .setTimestamp()
-                                .setDescription(`Successfully removed <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}> from your autoreacts.\nYou now have \`${newARData.ARs.length}/${chnlData.num}\` ar(s).`)
+                                .setDescription(`Successfully removed <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}> from your autoreacts.\nYou now have \`${newARData.ARs.length}/${arData.num}\` ar(s).`)
                             ]
                         })
 
@@ -159,7 +159,7 @@ module.exports = {
                                 })
                                 .setColor("#00ff9d")
                                 .setTimestamp()
-                                .setDescription(`Successfully removed <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}> from your autoreacts.\nYou now have \`${newARData.ARs.length}/${chnlData.num}\` ar(s).`)
+                                .setDescription(`Successfully removed <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}> from your autoreacts.\nYou now have \`${newARData.ARs.length}/${arData.num}\` ar(s).`)
                             ]
                         })
                     }
@@ -180,7 +180,7 @@ module.exports = {
                                     const emo = client.emojis.cache.get(e)
                                     return `\` ${i + 1} \` <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}> — \`${emo.id}\``
                                 }).join('\n')}`)
-                                .addField("Autoreacts attained", `${bar(100 * (ARData.ARs.length / chnlData.num))} \`${ARData.ARs.length} / ${chnlData.num}\``)
+                                .addField("Autoreacts attained", `${bar(100 * (ARData.ARs.length / arData.num))} \`${ARData.ARs.length} / ${arData.num}\``)
                         ]
                     })
                 }
