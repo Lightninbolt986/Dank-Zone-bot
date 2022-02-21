@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const emotes = require("../../data/emotes.json")
-const arcreate = ['<@&782502710099836929>', '<@&768756245993619467>', '<@&772005497762218024>']
+const arcreate = ['<@&772005497762218024>', '<@&768756245993619467>', '<@&782502710099836929>', '<@&930494768377630731>']
 const bar = require("../../functions").bar
 module.exports = {
     name: "ar",
