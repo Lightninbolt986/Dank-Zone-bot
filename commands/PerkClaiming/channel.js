@@ -327,7 +327,7 @@ module.exports = {
                                 name: "Invalid arguments",
                                 iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
                             })
-                            .setDescription('The command you input is incomplete, please provide a valid argument.\n\n>>> <:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `add`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `info`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `reset`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `create`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `remove`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `rename`')
+                            .setDescription('The command you input is incomplete.\nPlease provide a valid argument.\n\n>>> <:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `add`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `info`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `reset`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `create`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `remove`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'channel `rename`')
                     ]
                 })
             }
