@@ -1,17 +1,27 @@
 const Discord = require("discord.js");
 const emotes = require("../../data/emotes.json")
-const chnlcreate = ['penis']
-const {
-    bar,
-    isColor
-} = require("../../functions")
+const rolecreate = ['<@&772005505278935050>', '<@&782503381070512128>', '<@&930494904617017404>']
+const { bar, isColor } = require("../../functions")
+
 module.exports = {
     name: "role",
     async execute(message, args, cmd, client) {
+
         const RoleData = require("../../functions").CanGetRoleWithInfo(message.member);
 
         if (!RoleData.has) {
-            return message.reply('nou bitch u no have the roles needed')
+            return message.reply({
+                embeds: [
+                    new Discord.MessageEmbed()
+                        .setColor(16724533)
+                        .setThumbnail('https://images-ext-2.discordapp.net/external/TLvA6RAOze3jWk_uDiSWQaZr6q7pNze0sCMmy4dImak/https/media.discordapp.net/attachments/909344848761466881/914774250219511848/1qrL0Pk2sWbLmTcHh5f4iMTW8478OwNG4P8BP9wIb9U4JZUAAAAASUVORK5CYII.png')
+                        .setAuthor({
+                            name: "Missing roles",
+                            iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
+                        })
+                        .setDescription(`Oops! You need any of the following roles to create a channel\n\n>>> <:nx_tick:910049767910952961> ${rolecreate.join('\n<:nx_tick:910049767910952961> ')}`)
+                ]
+            })
         } else {
             const roleModel = require(`../../models/roleSchema`);
             const roleData = await roleModel.findOne({
@@ -21,19 +31,29 @@ module.exports = {
             if (["rename", "add", "reset", "remove", "create", "info", "color", "rall"].includes(args[0])) {
                 if (args[0] == "create") {
                     if (roleData) {
-                        return message.reply('already have')
+                        return message.reply({
+                            embeds: [
+                                new Discord.MessageEmbed()
+                                    .setColor(16724533)
+                                    .setAuthor({
+                                        name: "Role exists.",
+                                        iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
+                                    })
+                                    .setDescription(`Looks like you already have a role.\n**Role**: <@&${roleData.RoleID}>`)
+                            ]
+                        })
                     }
                     args.shift();
                     if (!args[0]) return message.reply(`${emotes.cross} Please provide a name for your role.`);
 
                     const makeAbove = message.guild.roles.cache.get('794243713311178763').position + 1
                     const role = await message.guild.roles.create({
-                        name: args.join(' '),
+                        name: args.join(" ").length > 100 ? `${args.join(" ").slice(0, 100)}` : `${args.join(" ")}`,
                         position: makeAbove,
-                        reason: "User claimed private role"
+                        reason: `${message.member.user.tag} claimed private role.`
                     });
                     message.member.roles.add(role.id, {
-                        reason: 'User claimed private role'
+                        reason: `${message.member.user.tag} claimed private role.`
                     })
                     const i = await roleModel.create({
                         UserID: message.author.id,
@@ -42,28 +62,51 @@ module.exports = {
                     });
                     i.save();
                     message.reply({
-                        content: 'Created role <@&' + role.id + '>',
+                        embeds: [new Discord.MessageEmbed()
+                            .setFooter({
+                                text: message.author.tag,
+                            })
+                            .setAuthor({
+                                name: "Role Created!",
+                                iconURL: "https://cdn.discordapp.com/emojis/910049767910952961.png",
+                            })
+                            .setColor("#00ff9d")
+                            .setTimestamp()
+                            .setDescription("Your **Private Role** has been **successfully** created!\n**Role**: <@&" + role.id + ">")
+                        ],
                         allowedMentions: {
-                            parse: ['users'],
+                            parse: ['users', 'roles'],
                             repliedUser: false
                         }
                     });
                 } else if (args[0] == "rename") {
                     args.shift();
-                    if (!roleData) return message.reply("No role");
-                    if(!args[0]) return message.reply('give name')
+                    if (!roleData) return message.reply(`${emotes.cross} You don't have a role to rename.`);
+                    if (!args[0]) return message.reply(`${emotes.cross} Please provide a name to raname role to.`);
                     const role = await message.guild.roles.fetch(
                         roleData.RoleID
                     );
                     const name = role.name
                     role.setName(
-                        `${args.join(" ")}`,
+                        args.join(" ").length > 100 ? `${args.join(" ").slice(0, 100)}` : `${args.join(" ")}`,
                         "Private role renamed by user"
                     );
+
                     message.reply({
-                        content: `done named @${name} to <@&${role.id}>`,
+                        embeds: [new Discord.MessageEmbed()
+                            .setFooter({
+                                text: message.author.tag,
+                            })
+                            .setAuthor({
+                                name: "Role Renamed!",
+                                iconURL: "https://cdn.discordapp.com/emojis/910049767910952961.png",
+                            })
+                            .setColor("#00ff9d")
+                            .setTimestamp()
+                            .setDescription(`Name of your role has been changed from \`@${name}\` to \`@${message.guild.roles.cache.get(role.id).name}\``)
+                        ],
                         allowedMentions: {
-                            parse: ['users'],
+                            parse: ['users', 'roles'],
                             repliedUser: false
                         }
                     });
@@ -81,7 +124,7 @@ module.exports = {
                         return message.reply(`${emotes.cross} That user already has your role.`)
                     }
                     if (user.id === message.author.id) {
-                        return message.reply(`${emotes.cross} You cannot give yourself your role.`)
+                        return message.reply(`${emotes.cross} You already have your own role.`)
                     }
                     if (user.user.bot) return message.reply(`${emotes.cross} That user is a bot and cannot be given your role.`)
                     user.roles.add(role.id, {
@@ -102,12 +145,12 @@ module.exports = {
                                 text: message.author.tag,
                             })
                             .setAuthor({
-                                name: "User Added!",
+                                name: "Role Added!",
                                 iconURL: "https://cdn.discordapp.com/emojis/910049767910952961.png",
                             })
                             .setColor("#00ff9d")
                             .setTimestamp()
-                            .setDescription(`Added <@${user.id}> to your role <@&${role.id}>.\nIt now has \`${newRoleData.MembersID.length}/${RoleData.num}\` members.`)
+                            .setDescription(`Added <@&${role.id}> to <@${user.id}>.\nIt now has \`${newRoleData.MembersID.length}/${RoleData.num}\` members.`)
                         ]
                     })
 
@@ -121,7 +164,7 @@ module.exports = {
                         return message.reply(`${emotes.cross} You need to mention someone.`)
                     }
                     if (user.id === message.author.id) {
-                        return message.reply(`${emotes.cross} You cannot remove yourself from your role.`)
+                        return message.reply(`${emotes.cross} You cannot remove your role from yourself.`)
                     }
                     if (!roleData.MembersID.includes(user.id)) {
                         return message.reply(`${emotes.cross} That user does not have your role.`)
@@ -144,12 +187,12 @@ module.exports = {
                                 text: message.author.tag,
                             })
                             .setAuthor({
-                                name: "User Removed!",
+                                name: "Role Removed!",
                                 iconURL: "https://cdn.discordapp.com/emojis/910049767910952961.png",
                             })
                             .setColor("#00ff9d")
                             .setTimestamp()
-                            .setDescription(`Removed <@${user.id}> from your role <@&${role.id}>.\nIt now has \`${newRoleData.MembersID.length}/${RoleData.num}\` members.`)
+                            .setDescription(`Removed <@&${role.id}> from <@${user.id}>.\nIt now has \`${newRoleData.MembersID.length}/${RoleData.num}\` members.`)
                         ]
                     })
 
@@ -162,19 +205,19 @@ module.exports = {
                     let row = [{
                         type: 1,
                         components: [{
-                                type: 2,
-                                style: 'PRIMARY',
-                                custom_id: "Y",
-                                label: "Yes",
-                            },
-                            {
-                                type: 2,
-                                style: 'DANGER',
-                                custom_id: "N",
-                                label: "No",
-                            },
+                            type: 2,
+                            style: 'PRIMARY',
+                            custom_id: "Y",
+                            label: "Yes",
+                        },
+                        {
+                            type: 2,
+                            style: 'DANGER',
+                            custom_id: "N",
+                            label: "No",
+                        },
                         ],
-                    }, ];
+                    },];
 
 
                     const msg = await message.reply({
@@ -229,15 +272,15 @@ module.exports = {
                     message.reply({
                         embeds: [
                             new Discord.MessageEmbed()
-                            .setColor("BLURPLE")
-                            .setAuthor({
-                                name: message.member.user.username + "'s roles info",
-                                iconURL: message.member.user.displayAvatarURL({
-                                    dynamic: true
+                                .setColor("BLURPLE")
+                                .setAuthor({
+                                    name: message.member.user.username + "'s role info",
+                                    iconURL: message.member.user.displayAvatarURL({
+                                        dynamic: true
+                                    })
                                 })
-                            })
-                            .setDescription(`${emotes.dot} Role: <@&${role.id}>\n${emotes.dot} Created at: <t:${(role.createdAt.getTime() / 1000).toFixed()}:f>\n${emotes.dot} Members: ${roleData.MembersID.length ? roleData.MembersID.map(e => { return `<@${e}>` }).join(', ') : '\`Nobody yet\`'}`)
-                            .addField("Member Space", `${bar(100 * (roleData.MembersID.length / RoleData.num))} \`${roleData.MembersID.length} / ${RoleData.num}\``)
+                                .setDescription(`${emotes.dot} Role: <@&${role.id}> \`(${role.hexColor})\`\n${emotes.dot} Created at: <t:${(role.createdAt.getTime() / 1000).toFixed()}:f>\n${emotes.dot} Members: ${roleData.MembersID.length ? roleData.MembersID.map(e => { return `<@${e}>` }).join(', ') : '\`Nobody yet\`'}`)
+                                .addField("Member Space", `${bar(100 * (roleData.MembersID.length / RoleData.num))} \`${roleData.MembersID.length} / ${RoleData.num}\``)
                         ],
                         allowedMentions: {
                             repliedUser: false,
@@ -248,29 +291,44 @@ module.exports = {
                 } else if (args[0] == 'color') {
                     args.shift()
                     const iscolor = isColor(args[0])
-                    if (!roleData) return message.reply('You don\'t have a role!')
-                    if (!iscolor) return message.reply('Thats not a valid hex')
+                    if (!roleData) return message.reply(`${emotes.cross} You need to have a role first to change color`);
+                    if (!iscolor) return message.reply(`${emotes.cross} Thats not a valid hex`)
                     const role = await message.guild.roles.fetch(roleData.RoleID)
-                    role.setColor(args[0])
-                    message.reply(`Set role color to ${args[0]}`)
+
+                    role.setColor(args[0]).then(r => {
+                        message.reply({
+                            embeds: [new Discord.MessageEmbed()
+                                .setFooter({
+                                    text: message.author.tag,
+                                })
+                                .setAuthor({
+                                    name: "Color Updated!",
+                                    iconURL: "https://cdn.discordapp.com/emojis/910049767910952961.png",
+                                })
+                                .setColor(`${r.hexColor}`)
+                                .setTimestamp()
+                                .setDescription(`Set <@&${r.id}>'s color to \`${r.hexColor}\``)]
+                        })
+                    })
+
                 } else if (args[0] == 'rall') {
                     if (!roleData) return message.reply(`${emotes.cross} You need to have a role first to remove all members from it.`);
-                    if (!roleData.MembersID.length) return message.reply('Nobody except you has your role')
+                    if (!roleData.MembersID.length) return message.reply(`${emotes.cross} Nobody except you has your role`)
                     args.shift();
                     let row = [{
                         type: 1,
                         components: [{
-                                type: 2,
-                                style: 'PRIMARY',
-                                custom_id: "Y",
-                                label: "Yes",
-                            },
-                            {
-                                type: 2,
-                                style: 'DANGER',
-                                custom_id: "N",
-                                label: "No",
-                            },
+                            type: 2,
+                            style: 'PRIMARY',
+                            custom_id: "Y",
+                            label: "Yes",
+                        },
+                        {
+                            type: 2,
+                            style: 'DANGER',
+                            custom_id: "N",
+                            label: "No",
+                        },
                         ],
                     }];
 
@@ -292,7 +350,7 @@ module.exports = {
                                     const member = await message.guild.members.fetch(e)
                                     member.roles.remove(roleData.RoleID)
                                 })
-                                i.reply(`Removed your role from ${roleData.MembersID.length} people`)
+                                i.reply(`${emotes.tick} Removed your role from \`${roleData.MembersID.length}\` people`)
                                 roleData.MembersID = []
                                 roleData.save()
                             } else {
@@ -326,13 +384,13 @@ module.exports = {
                 message.reply({
                     embeds: [
                         new Discord.MessageEmbed()
-                        .setColor(16724533)
-                        .setThumbnail('https://images-ext-2.discordapp.net/external/TLvA6RAOze3jWk_uDiSWQaZr6q7pNze0sCMmy4dImak/https/media.discordapp.net/attachments/909344848761466881/914774250219511848/1qrL0Pk2sWbLmTcHh5f4iMTW8478OwNG4P8BP9wIb9U4JZUAAAAASUVORK5CYII.png')
-                        .setAuthor({
-                            name: "Invalid arguments",
-                            iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
-                        })
-                        .setDescription('The command you input is incomplete, please provide a valid argument.\n\n>>> <:nx_tick:910049767910952961> ' + process.env.prefix + 'role `add`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'role `info`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'role `reset`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'role `create`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'role `remove`\n<:nx_tick:910049767910952961> ' + process.env.prefix + 'role `rename`')
+                            .setColor(16724533)
+                            .setThumbnail('https://images-ext-2.discordapp.net/external/TLvA6RAOze3jWk_uDiSWQaZr6q7pNze0sCMmy4dImak/https/media.discordapp.net/attachments/909344848761466881/914774250219511848/1qrL0Pk2sWbLmTcHh5f4iMTW8478OwNG4P8BP9wIb9U4JZUAAAAASUVORK5CYII.png')
+                            .setAuthor({
+                                name: "Invalid arguments",
+                                iconURL: "https://cdn.discordapp.com/emojis/914921124670890064.png",
+                            })
+                            .setDescription(`The command you input is incomplete.\nPlease provide a valid argument.\n\n>>> <:nx_tick:910049767910952961> ${process.env.prefix}role \`rall\`\n<:nx_tick:910049767910952961> ${process.env.prefix}role \`info\`\n<:nx_tick:910049767910952961> ${process.env.prefix}role \`color\`\n<:nx_tick:910049767910952961> ${process.env.prefix}role \`rename\`\n<:nx_tick:910049767910952961> ${process.env.prefix}role \`add / remove\`\n<:nx_tick:910049767910952961> ${process.env.prefix}role \`create / reset\``)
                     ]
                 })
             }
