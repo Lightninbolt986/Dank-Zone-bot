@@ -1,6 +1,6 @@
 module.exports = {
     name: 'checkdono',
-
+    aliases:['check'],
     async execute(m, a, cmd, client, d, p) {
         const taggedUser = m.mentions.users.first();
         if (!taggedUser) {
