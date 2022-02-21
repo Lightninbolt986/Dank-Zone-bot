@@ -3,7 +3,7 @@ const emotes = require("../../data/emotes.json")
 const {
     Permissions
 } = require("discord.js");
-const chnlcreate = ['<@&782502710099836929>', '<@&745564909810614343>', '<@&772005497762218024>']
+const chnlcreate = ['<@&772005497762218024>', '<@&745564909810614343>', '<@&782502710099836929>', '<@&930494844160323605>']
 const bar = require("../../functions").bar
 module.exports = {
     name: "channel",
