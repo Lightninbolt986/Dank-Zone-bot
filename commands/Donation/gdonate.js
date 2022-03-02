@@ -9,13 +9,13 @@ module.exports = {
         if(message.channel.id !== "744488316338176020"){
             return message.reply(`${emotes.cross} Please use this command in <#744488316338176020>`)
         }
-        if (!args.slice(1).join(" ")) {
+        if (!args.join(" ")) {
             return message.reply(`${emotes.cross} Incorrect Syntax.\n**Syntax:** \`${process.env.prefix}donate <prize>/<duration>/<winners>/<requirement>/<message>\``)
         }
-        if (!args.slice(1).join(" ").includes("/")) {
+        if (!args.join(" ").includes("/")) {
             return message.reply(`${emotes.cross} Arguments must be separated by \`/\`\n**Syntax:** \`${process.env.prefix}donate <prize>/<duration>/<winners>/<requirement>/<message>\``)
         }
-        let m = args.slice(1).join(" ").split("/")
+        let m = args.join(" ").split("/")
 
         let pingrole
 
