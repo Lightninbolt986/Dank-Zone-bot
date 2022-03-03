@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const emotes = require("../../data/emotes.json")
 const arcreate = ['<@&772005497762218024>', '<@&768756245993619467>', '<@&782502710099836929>', '<@&930494768377630731>']
 const bar = require("../../functions").bar
+const emojiRegex = require('emoji-regex');
 module.exports = {
     name: "ar",
     aliases: ["autoreact"],
@@ -38,8 +39,8 @@ module.exports = {
 
                     let id = args[0].match(/:[0-9]+>/gi)
                     if (id) id = id[0].substr(1).slice(0, -1)
-
-                    const emo = client.emojis.cache.get(id) || client.emojis.cache.get(args[0])
+                    const regex = emojiRegex();
+                    const emo = client.emojis.cache.get(id) || client.emojis.cache.get(args[0]) || args[0].match(regex)?.[0]
                     if (!emo) return message.reply(`${emotes.cross} Either that's not a valid emoji or **${client.user.username}** can't access it.`)
                     if (ARData) {
                         //already has a schema
@@ -53,7 +54,7 @@ module.exports = {
                             UserID: message.author.id
                         }, {
                             $push: {
-                                ARs: emo.id
+                                ARs: emo.id || emo
                             }
                         }, {
                             new: true
@@ -69,13 +70,14 @@ module.exports = {
                                 })
                                 .setColor("#00ff9d")
                                 .setTimestamp()
-                                .setDescription(`Successfully added <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}> to your autoreacts.\nYou now have \`${newARData.ARs.length}/${arData.num}\` ar(s).`)
+                                .setDescription(`Successfully added ${id?`<${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}>`:emo} to your autoreacts.\nYou now have \`${newARData.ARs.length}/${arData.num}\` ar(s).`)
                             ]
                         })
                     } else {
+                        const thing = emo.id||emo
                         const i = await ARSchema.create({
                             UserID: message.author.id,
-                            ARs: [emo.id],
+                            ARs: [thing],
                         });
                         i.save();
                         message.reply({
@@ -89,7 +91,7 @@ module.exports = {
                                 })
                                 .setColor("#00ff9d")
                                 .setTimestamp()
-                                .setDescription(`Successfully added <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}> to your autoreacts.\nYou now have \`${i.ARs.length}/${arData.num}\` ar(s).`)
+                                .setDescription(`Successfully added ${id?`<${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}>`:emo} to your autoreacts.\nYou now have \`${i.ARs.length}/${arData.num}\` ar(s).`)
                             ]
                         })
                     }
@@ -134,16 +136,18 @@ module.exports = {
                         }
                         let id = args[0].match(/:[0-9]+>/gi)
                         if (id) id = id[0].substr(1).slice(0, -1);
-                        const emo = client.emojis.cache.get(id) || client.emojis.cache.get(args[0])
+                        const regex = emojiRegex();
+                        const emo = client.emojis.cache.get(id) || client.emojis.cache.get(args[0]) || args[0].match(regex)
                         if (!emo) return message.reply(`${emotes.cross} Either that's not a valid emoji or **${client.user.username}** can't access it.`)
-                        if (!ARData.ARs.includes(id)) {
+                        if (!ARData.ARs.includes(`${id||emo}`)) {
                             return message.reply(`${emotes.cross} You don't have that emoji as an autoreact`)
                         }
+                        console.log(id,emo)
                         const newARData = await ARSchema.findOneAndUpdate({
                             UserID: message.author.id
                         }, {
                             $pull: {
-                                ARs: id
+                                ARs: id || emo[0]
                             }
                         }, {
                             new: true
@@ -159,7 +163,7 @@ module.exports = {
                                 })
                                 .setColor("#00ff9d")
                                 .setTimestamp()
-                                .setDescription(`Successfully removed <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}> from your autoreacts.\nYou now have \`${newARData.ARs.length}/${arData.num}\` ar(s).`)
+                                .setDescription(`Successfully removed ${id?`<${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}>`:emo} from your autoreacts.\nYou now have \`${newARData.ARs.length}/${arData.num}\` ar(s).`)
                             ]
                         })
                     }
@@ -178,7 +182,7 @@ module.exports = {
                                 })
                                 .setDescription(`${ARData.ARs.map((e, i) => {
                                     const emo = client.emojis.cache.get(e)
-                                    return `\` ${i + 1} \` <${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}> — \`${emo.id}\``
+                                    return `\` ${i + 1} \` ${emo?`<${emo.animated ? 'a' : ''}:${emo.name}:${emo.id}> — \`${emo.id}\``:e}`
                                 }).join('\n')}`)
                                 .addField("Autoreacts attained", `${bar(100 * (ARData.ARs.length / arData.num))} \`${ARData.ARs.length} / ${arData.num}\``)
                         ]
