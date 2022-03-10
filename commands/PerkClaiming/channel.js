@@ -102,6 +102,17 @@ module.exports = {
                     message.reply({
                         embeds: [embed],
                     });
+                    channel.send({
+                        embeds: [ 
+                             new Discord.MessageEmbed()
+                             .setColor("BLURPLE")
+                             .setAuthor({
+                                    name: message.member.user.username + "'s channel info",
+                                    iconURL: message.member.user.displayAvatarURL({ dynamic: true })
+                                })
+                             .setDescription(`${emotes.dot} Channel ID: \`${channel.id}\`\n${emotes.dot} Created at: <t:${(channel.createdAt.getTime() / 1000).toFixed()}:f>\n${emotes.dot} Owner: <@${message.author.id}> \`(${message.author.id})\``)
+                        ]
+                    })
                 } else if (args[0] == "rename") {
                     args.shift();
                     if (!channelData) return message.channel.send("No channel");
