@@ -4,7 +4,7 @@ const bar = require('../../functions').bar
 module.exports = {
     name: 'checkdono',
     aliases: ['check', 'dncheck', 'c', 'progress'],
-    async execute(m, a, cmd, client, d, p) {
+    async execute(m, args, cmd, client, d, p) {
         const taggedUser = m.mentions.members.first() || m.guild.members.cache.get(args[0]);
         if (!taggedUser) {
 

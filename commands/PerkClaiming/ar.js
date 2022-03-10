@@ -142,7 +142,6 @@ module.exports = {
                         if (!ARData.ARs.includes(`${id||emo}`)) {
                             return message.reply(`${emotes.cross} You don't have that emoji as an autoreact`)
                         }
-                        console.log(id,emo)
                         const newARData = await ARSchema.findOneAndUpdate({
                             UserID: message.author.id
                         }, {
