@@ -10,7 +10,7 @@ const fifty = '772004100953866263'
 const hundred = '779268054953492503'
 const twofifty = '779268051123830784'
 const fivehundred = '772005497762218024'
-const sevenfifty '798558270104010752'
+const sevenfifty = '798558270104010752'
 const billion = '772005505278935050'
 const twobillion = '815507562107633684' 
 

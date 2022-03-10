@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const ms = require("ms")
-const emotes = require("../../Data/emotes.json");
+const emotes = require("../../data/emotes.json");
 const commas = require('../../functions').commas
 module.exports = {
     name: 'donate',
